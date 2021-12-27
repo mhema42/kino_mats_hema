@@ -1,14 +1,1 @@
-
-{
-    "version": 3,
-    "mappings": "ACAA,AAAA,MAAM,CAAC;EACH,gBAAgB,EAAE,GAAG;CAmBxB;;AApBD,AAGI,MAHE,CAGF,UAAU,CAAC;EACP,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,MAAM;EACnB,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,SAAS;EACjB,MAAM,EAAE,KAAK;CAShB;;AAnBL,AAYQ,MAZF,CAGF,UAAU,CASN,EAAE,CAAC;EACC,eAAe,EAAE,IAAI;CAKxB;;AAlBT,AAeY,MAfN,CAGF,UAAU,CASN,EAAE,CAGE,CAAC,CAAC;EACE,eAAe,EAAE,IAAI;CACxB",
-    "sources": [
-        "main.scss",
-        "sections/_nav.scss"
-    ],
-    "names": [],
-    "file": "main.css"
-}
-
-{"version":3,"sourceRoot":"","sources":["sections/footer.scss"],"names":[],"mappings":";AAAA;AAAA;AAGA;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;EACA;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI","file":"main.css"}
-
+{"version":3,"sourceRoot":"","sources":["sections/_variables.scss","sections/_footer.scss","sections/_nav.scss"],"names":[],"mappings":";AAAA;AAAA;ACAA;AAAA;AAGA;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;EACA;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI;;;ACxBR;EACI;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAEA;EACI","file":"main.css"}
