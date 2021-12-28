@@ -8,15 +8,15 @@ import loadJsonData from "../loadJson.js";
     const jData = new loadJsonData();
             
     const current = await jData.loadCurrentMovies(); 
-    current.forEach(Movie => //add slice before forEach here to only show 3 movies
+    current.slice(2, 5).forEach(Movie => //add slice before forEach here to only show 3 movies
         document.querySelector(".current-movieList").append(Movie.render())); 
 
     const upcoming = await jData.loadUpcomingMovies();
-    upcoming.forEach(Movie =>   //add slice before forEach here to only show 3 movies
+    upcoming.slice(2, 5).forEach(Movie =>   //add slice before forEach here to only show 3 movies
         document.querySelector(".upcoming-movieList").append(Movie.render())); 
 
-    //popular movies will be sorted later with rating filter, but we will show three random movies for now. 
-    upcoming.forEach(Movie =>   //add slice on forEach here to only show 3 movies
+    //popular movies will be sorted depending on rating later with a rating filter, but we will show three random movies for now. 
+    current.slice(0, 3).forEach(Movie =>   //add slice on forEach here to only show 3 movies
             document.querySelector(".popular-movieList").append(Movie.render())); 
       
   })(); 
