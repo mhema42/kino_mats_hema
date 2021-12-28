@@ -1,3 +1,5 @@
+"use strict"
+
 export default class Movie {
     constructor (data) {
         this.title = data.title;
@@ -16,9 +18,9 @@ export default class Movie {
         poster.src = this.posterUrl; 
         movieCard.append(poster)
 
-        this.card = card; 
+        this.movieCard = movieCard; 
 
-        return card; 
+        return movieCard; 
 
     }
 

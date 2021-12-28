@@ -1,19 +1,26 @@
 "use strict"
 
 import loadJsonData from "./loadJson.js";
-//You can use this to see if the fetch functions are working, we can remove it when we are adding the rendering function. 
+//You can use this to see if the render functions are workin, but it can easily be changed to render three movies for each section.  
 
 
 (async () => {
     const jData = new loadJsonData();
+            
+    const current = await jData.loadCurrentMovies(); 
+    current.forEach(Movie => //add slice before forEach here to only show 3 movies
+        document.querySelector(".current-movieList").append(Movie.render())); 
 
-    const movie = await jData.loadCurrentMovies(); 
-    console.log(movie)
+    const upcoming = await jData.loadUpcomingMovies();
+    upcoming.forEach(Movie =>   //add slice before forEach here to only show 3 movies
+        document.querySelector(".upcoming-movieList").append(Movie.render())); 
 
-    const movie2 = await jData.loadUpcomingMovies(); 
-    console.log(movie2)
+    //popular movies will be sorted later with rating filter, but we will show three random movies for now. 
+    upcoming.forEach(Movie =>   //add slice on forEach here to only show 3 movies
+            document.querySelector(".popular-movieList").append(Movie.render())); 
+      
+  })(); 
 
-})(); 
 
 
     

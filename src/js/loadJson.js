@@ -1,6 +1,6 @@
 "use strict"
 
-import Movie from "./movies/renderMovies";
+import Movie from "./movies/renderMovies.js";
 
 export default class loadJsonData {
     async loadCurrentMovies() {
