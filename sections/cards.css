@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
 Author: Simon Ljungström */
-body {
+.cards {
   background-color: red;
 }
 
