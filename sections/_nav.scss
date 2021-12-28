@@ -1,5 +1,5 @@
 header {
-    background-color: red; // change to sass variables
+    background-color: $primary-color; 
 
     .main-menu {
         display: flex;
