@@ -13,8 +13,17 @@ header {
         li {
             list-style-type: none;
 
-            a {
+            .menu-btn {
+                font-family: $font-choice;
+                font-weight: bold;
                 text-decoration: none;
+                text-shadow: 1px 1px 1px rgba($fourth-color, 0.7);
+                color: $third-color;
+                background-color: $primary-color;
+                padding: 10px 30px;
+                border: 2px solid $secondary-color;
+                border-radius: 6px;
+                box-shadow: 0px 0px 10px rgba($third-color, 0.7);
             }
         }
     }
