@@ -30,11 +30,21 @@ footer .footer-contact {
   width: 140px;
 }
 
+
+/* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
+Author: Simon Ljungström */
+body {
+  background-color: red;
+}
+
+.popular {
+
 header {
   background-color: red;
 }
 
 header .main-menu {
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,6 +52,31 @@ header .main-menu {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+
+  padding: 50px;
+}
+
+.current {
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.upcoming {
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -69,5 +104,6 @@ header .main-menu li .menu-btn {
   border-radius: 6px;
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+
 }
 /*# sourceMappingURL=main.css.map */
