@@ -1,6 +1,6 @@
 "use strict"
 
-import loadJsonData from "./loadJson.js";
+import loadJsonData from "../loadJson.js";
 //You can use this to see if the render functions are workin, but it can easily be changed to render three movies for each section.  
 
 

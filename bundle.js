@@ -10,16 +10,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/index.js":
-/*!*************************!*\
-  !*** ./src/js/index.js ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loadJson_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loadJson.js */ \"./src/js/loadJson.js\");\n\r\n\r\n;\r\n//You can use this to see if the render functions are workin, but it can easily be changed to render three movies for each section.  \r\n\r\n\r\n(async () => {\r\n    const jData = new _loadJson_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\n            \r\n    const current = await jData.loadCurrentMovies(); \r\n    current.forEach(Movie => //add slice before forEach here to only show 3 movies\r\n        document.querySelector(\".current-movieList\").append(Movie.render())); \r\n\r\n    const upcoming = await jData.loadUpcomingMovies();\r\n    upcoming.forEach(Movie =>   //add slice before forEach here to only show 3 movies\r\n        document.querySelector(\".upcoming-movieList\").append(Movie.render())); \r\n\r\n    //popular movies will be sorted later with rating filter, but we will show three random movies for now. \r\n    upcoming.forEach(Movie =>   //add slice on forEach here to only show 3 movies\r\n            document.querySelector(\".popular-movieList\").append(Movie.render())); \r\n      \r\n  })(); \r\n\r\n\r\n\r\n    \n\n//# sourceURL=webpack://kino-ytterhogdal/./src/js/index.js?");
-
-/***/ }),
-
 /***/ "./src/js/loadJson.js":
 /*!****************************!*\
   !*** ./src/js/loadJson.js ***!
@@ -37,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Movie)\n/* harmony export */ });\n\r\n\r\nclass Movie {\r\n    constructor (data) {\r\n        this.title = data.title;\r\n        this.rating = data.rating;\r\n        this.description = data.description;\r\n        this.posterUrl = data.posterUrl;\r\n        this.releaseDate = data.releaseDate; \r\n    }\r\n\r\n    render() {\r\n        const movieCard = document.createElement(\"li\");\r\n        movieCard.className = \"movieCard-item\";\r\n\r\n        const poster = document.createElement(\"img\");\r\n        poster.className =\"movieCard-poster\";\r\n        poster.src = this.posterUrl; \r\n        movieCard.append(poster)\r\n\r\n        this.movieCard = movieCard; \r\n\r\n        return movieCard; \r\n\r\n    }\r\n\r\n}\n\n//# sourceURL=webpack://kino-ytterhogdal/./src/js/movies/renderMovies.js?");
+
+/***/ }),
+
+/***/ "./src/js/pages/index.js":
+/*!*******************************!*\
+  !*** ./src/js/pages/index.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _loadJson_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../loadJson.js */ \"./src/js/loadJson.js\");\n\r\n\r\n;\r\n//You can use this to see if the render functions are workin, but it can easily be changed to render three movies for each section.  \r\n\r\n\r\n(async () => {\r\n    const jData = new _loadJson_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\n            \r\n    const current = await jData.loadCurrentMovies(); \r\n    current.forEach(Movie => //add slice before forEach here to only show 3 movies\r\n        document.querySelector(\".current-movieList\").append(Movie.render())); \r\n\r\n    const upcoming = await jData.loadUpcomingMovies();\r\n    upcoming.forEach(Movie =>   //add slice before forEach here to only show 3 movies\r\n        document.querySelector(\".upcoming-movieList\").append(Movie.render())); \r\n\r\n    //popular movies will be sorted later with rating filter, but we will show three random movies for now. \r\n    upcoming.forEach(Movie =>   //add slice on forEach here to only show 3 movies\r\n            document.querySelector(\".popular-movieList\").append(Movie.render())); \r\n      \r\n  })(); \r\n\r\n\r\n\r\n    \n\n//# sourceURL=webpack://kino-ytterhogdal/./src/js/pages/index.js?");
 
 /***/ })
 
@@ -100,7 +100,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/pages/index.js");
 /******/ 	
 /******/ })()
 ;
