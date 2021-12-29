@@ -33,9 +33,23 @@ Author: Mats Hemå */
 .about-us-space {
     background-color: $primary-color;
     color: $secondary-color;
+    font-family: $font-choice;
+    padding: 40px 0px 40px 0px;
+
+    .about-us-history {
+        margin: auto;
+        width: 70%;
     
-    h1 { // this can be removed when other content in div is added
-        margin: 0;
-        padding: 1.5rem 0rem 2rem 10rem;
+        img {
+            box-shadow: 0px 0px 15px 1px black;
+            float: none;
+            margin: 0;
+            width: 600px;
+        }
+    }
+
+    .about-us-accessibility {
+        margin: auto;
+        width: 70%;
     }
 }

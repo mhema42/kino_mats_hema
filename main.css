@@ -191,11 +191,26 @@ Author: Mats Hemå */
 .about-us-space {
   background-color: #BB0000;
   color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 40px 0px 40px 0px;
 }
 
-.about-us-space h1 {
+.about-us-space .about-us-history {
+  margin: auto;
+  width: 70%;
+}
+
+.about-us-space .about-us-history img {
+  -webkit-box-shadow: 0px 0px 15px 1px black;
+          box-shadow: 0px 0px 15px 1px black;
+  float: none;
   margin: 0;
-  padding: 1.5rem 0rem 2rem 10rem;
+  width: 600px;
+}
+
+.about-us-space .about-us-accessibility {
+  margin: auto;
+  width: 70%;
 }
 
 .hero-image {
