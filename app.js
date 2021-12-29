@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
-const staticBasePath = './index.html';
+const staticBasePath = 'https://github.com/matodorovic/kino-ytterhogdal/';
 const PORT = process.env.PORT || 5050;
 
 const staticServe = function (req, res) {
