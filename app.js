@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 const staticBasePath = './index.html';
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
 const staticServe = function (req, res) {
     let resolvedBase = path.resolve(staticBasePath);
