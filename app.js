@@ -3,8 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
-const staticBasePath = 'https://github.com/matodorovic/kino-ytterhogdal/';
-const PORT = process.env.PORT || 5050;
+const staticBasePath = './';
+const PORT = process.env.PORT || 5500;
 
 const staticServe = function (req, res) {
     let resolvedBase = path.resolve(staticBasePath);
@@ -25,5 +25,5 @@ const staticServe = function (req, res) {
 const httpServer = http.createServer(staticServe);
 
 httpServer.listen(PORT, () => {
-    console.log("server listening on port 8080");
+    console.log("server listening on port " + PORT);
 });
