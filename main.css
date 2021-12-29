@@ -8,7 +8,7 @@ footer {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
-  Author: Marta Anna Todorovic */
+    Author: Marta Anna Todorovic */
 }
 
 footer h2 {
@@ -46,6 +46,27 @@ footer .icon a {
   opacity: 0.6;
 }
 
+footer .social-media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style-type: none;
+  float: left;
+  padding: 0;
+}
+
+footer .icon a {
+  color: rgba(211, 211, 211, 0.801);
+  text-decoration: none;
+  font-size: 2.2rem;
+  margin-right: 1rem;
+  opacity: 0.6;
+}
+
 header {
   background-color: #BB0000;
 }
@@ -65,7 +86,7 @@ header .main-menu {
       -ms-flex-align: center;
           align-items: center;
   padding: 0;
-  margin: 0rem 6rem;
+  margin: 0 10vw 0 15vw;
   height: 100px;
 }
 
@@ -77,7 +98,7 @@ header .main-menu li .menu-btn {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-decoration: none;
-  text-shadow: 1px 1px 1px rgba(212, 175, 55, 0.7);
+  text-shadow: 1px 1px 1px rgba(212, 175, 55, 0.5);
   color: #000;
   background-color: #BB0000;
   padding: 10px 30px;
@@ -85,6 +106,12 @@ header .main-menu li .menu-btn {
   border-radius: 6px;
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+
+#search {
+  border-radius: 50%;
+  padding: 10px 10px 10px 14px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
 }
 
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
@@ -143,7 +170,58 @@ Author: Simon Ljungström */
   background-size: cover;
 }
 
+/* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
+Author: Mats Hemå */
+.about-us-nav {
+  background-color: #000;
+}
+
+.about-us-nav .about-us-menu {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 40px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+  margin: auto;
+  width: 60%;
+}
+
+.about-us-nav .about-us-menu li {
+  list-style-type: none;
+}
+
+.about-us-nav .about-us-menu li .menu-text {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+
+.about-us-nav .about-us-menu li .menu-text:focus {
+  color: #d4af37;
+}
+
+.about-us-space {
+  background-color: #BB0000;
+  color: #fff;
+}
+
+.about-us-space h1 {
+  margin: 0;
+  padding: 1.5rem 0rem 2rem 10rem;
+}
+
 body {
   margin: 0;
 }
+
 /*# sourceMappingURL=main.css.map */
