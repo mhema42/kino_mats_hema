@@ -20,7 +20,7 @@ header {
     font-family: $font-choice;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 1px 1px 1px rgba($fourth-color, 0.5);
+   
     color: $third-color;
     background-color: $primary-color;
     padding: 10px 30px;
@@ -32,5 +32,5 @@ header {
 #search {
     border-radius: 50%;
     padding: 10px 10px 10px 14px;
-    text-shadow: 0px 0px 10px rgba($third-color, 0.9);
+    
 }
