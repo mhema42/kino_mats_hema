@@ -8,26 +8,20 @@ footer {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
-    Author: Marta Anna Todorovic */
+  Author: Marta Anna Todorovic */
 }
-
 footer h2 {
   font-size: large;
 }
-
 footer .footer-content {
-  display: -ms-grid;
   display: grid;
   gap: 80px;
-  -ms-grid-columns: 0.7fr 0.7fr 0.7fr 1.5fr;
-      grid-template-columns: 0.7fr 0.7fr 0.7fr 1.5fr;
+  grid-template-columns: 0.7fr 0.7fr 0.7fr 1.5fr;
   margin-left: 80px;
 }
-
 footer .footer-information {
   width: 180px;
 }
-
 footer .footer-contact {
   width: 140px;
 }
@@ -46,59 +40,23 @@ footer .icon a {
   opacity: 0.6;
 }
 
-footer .social-media {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  list-style-type: none;
-  float: left;
-  padding: 0;
-}
-
-footer .icon a {
-  color: rgba(211, 211, 211, 0.801);
-  text-decoration: none;
-  font-size: 2.2rem;
-  margin-right: 1rem;
-  opacity: 0.6;
-}
-
 header {
   background-color: #BB0000;
 }
-
 header .main-menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding: 0;
   margin: 0 10vw 0 15vw;
   height: 100px;
 }
-
 header .main-menu li {
   list-style-type: none;
 }
 
-<<<<<<< navSearch
 .menu-btn {
-=======
-header .main-menu li .menu-btn {
->>>>>>> main
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-decoration: none;
@@ -108,8 +66,7 @@ header .main-menu li .menu-btn {
   padding: 10px 30px;
   border: 2px solid #fff;
   border-radius: 6px;
-  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
 
 #search {
@@ -121,8 +78,6 @@ header .main-menu li .menu-btn {
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
 Author: Mats Hemå */
 img {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   float: left;
   margin: 10px 20px 0 10px;
@@ -136,44 +91,21 @@ Author: Simon Ljungström */
 }
 
 .popular {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   padding: 50px;
 }
 
 .current {
   padding: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 .upcoming {
   padding: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-<<<<<<< navSearch
-=======
-}
-
-.hero-image {
-  background-image: url("src/img/hero.png");
-  height: 35vw;
-  background-size: cover;
+  flex-direction: row;
 }
 
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
@@ -181,37 +113,24 @@ Author: Mats Hemå */
 .about-us-nav {
   background-color: #000;
 }
-
 .about-us-nav .about-us-menu {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  align-items: center;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   height: 40px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   padding: 0;
   margin: auto;
   width: 60%;
 }
-
 .about-us-nav .about-us-menu li {
   list-style-type: none;
 }
-
 .about-us-nav .about-us-menu li .menu-text {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
 }
-
 .about-us-nav .about-us-menu li .menu-text:focus {
   color: #d4af37;
 }
@@ -220,18 +139,19 @@ Author: Mats Hemå */
   background-color: #BB0000;
   color: #fff;
 }
-
 .about-us-space h1 {
   margin: 0;
   padding: 1.5rem 0rem 2rem 10rem;
->>>>>>> main
+}
+
+.hero-image {
+  background-image: url("src/img/hero.png");
+  height: 35vw;
+  background-size: cover;
 }
 
 body {
   margin: 0;
 }
-<<<<<<< navSearch
-=======
 
->>>>>>> main
 /*# sourceMappingURL=main.css.map */
