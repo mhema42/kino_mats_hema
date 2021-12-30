@@ -2,9 +2,14 @@
     "name": "kino-ytterhogdal",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "bundle.js",
     "scripts": {
-        "watch:js": "webpack --watch"
+        "watch:js": "webpack --watch",
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/matodorovic/kino-ytterhogdal.git"
     },
     "author": "",
     "license": "ISC",

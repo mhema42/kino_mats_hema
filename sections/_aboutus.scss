@@ -21,6 +21,11 @@ Author: Mats Hemå */
                 color: $secondary-color;
                 font-family: $font-choice;
                 text-decoration: none;
+/* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
+Author: Marta Anna Todorovic */
+                &:hover {
+                    color: $fourth-color;
+                }
             }
 
             .menu-text:focus {

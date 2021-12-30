@@ -50,7 +50,13 @@ footer .icon a {
   text-decoration: none;
   font-size: 2.2rem;
   margin-right: 1rem;
+}
+footer .icon i {
   opacity: 0.6;
+}
+footer .icon i:hover {
+  color: #d4af37;
+  opacity: 1;
 }
 
 header {
@@ -74,6 +80,12 @@ header .main-menu {
   padding: 0;
   margin: 0 10vw 0 15vw;
   height: 100px;
+  /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
+  Author: Marta Anna Todorovic */
+}
+header .main-menu a:hover {
+  color: #d4af37;
+  box-shadow: 0.7rem 0.5rem 0.5rem #000;
 }
 
 header .main-menu li {
@@ -96,6 +108,12 @@ header .main-menu li {
 #search {
   border-radius: 50%;
   padding: 10px 10px 10px 14px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
+  /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
+  Author: Marta Anna Todorovic */
+}
+#search:hover {
+  box-shadow: 0.7rem 0.5rem 0.5rem #000;
 }
 
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
@@ -182,6 +200,11 @@ Author: Mats Hemå */
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
+  /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
+  Author: Marta Anna Todorovic */
+}
+.about-us-nav .about-us-menu li .menu-text:hover {
+  color: #d4af37;
 }
 
 .about-us-nav .about-us-menu li .menu-text:focus {
