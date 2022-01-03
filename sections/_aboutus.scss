@@ -1,6 +1,8 @@
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
 Author: Mats Hemå */
 
+
+
 .about-us-nav {
     background-color: $third-color;
 
@@ -17,6 +19,8 @@ Author: Mats Hemå */
         li {
             list-style-type: none;
 
+            
+
             .menu-text {
                 color: $secondary-color;
                 font-family: $font-choice;
@@ -29,6 +33,10 @@ Author: Marta Anna Todorovic */
             }
 
             .menu-text:focus {
+                color: $fourth-color;
+            }
+
+            .menu-active {
                 color: $fourth-color;
             }
         }
@@ -56,5 +64,9 @@ Author: Marta Anna Todorovic */
     .about-us-accessibility {
         margin: auto;
         width: 70%;
+    }
+
+    .about-us-hide {
+        display: none;
     }
 }

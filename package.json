@@ -5,6 +5,7 @@
     "main": "bundle.js",
     "scripts": {
         "watch:js": "webpack --watch",
+        "watch:sass": "sass --watch --no-source-map src/main.scss main.css",
         "start": "node app.js"
     },
     "repository": {
@@ -19,6 +20,6 @@
     },
     "dependencies": {
         "vscode": "^1.1.37",
-        "webpack": "^5.64.1"
+        "webpack": "^5.65.0"
     }
 }
