@@ -17,7 +17,7 @@
     <body>
 
         <header>
-            <img src="img\gm.png" alt="Logo of Ytterhogdals bio, A black goat with an black old-fashioned camera on red background">
+            <a href="index.html"><img src="img\gm.png" alt="Logo of Ytterhogdals bio, A black goat with an black old-fashioned camera on red background"></a>
             <nav class="main-nav">
                 <ul class="main-menu">
                     <li><a class="menu-btn" href="#">Filmer</a></li>
@@ -32,15 +32,15 @@
 
         <nav class="about-us-nav">
             <ul class="about-us-menu">
-                <li><a class="menu-text" href="#">Historia</a></li>
-                <li><a class="menu-text" href="#">Policy</a></li>
-                <li><a class="menu-text" href="#">Tillgänglighet</a></li>
-                <li><a class="menu-text" href="#">FAQ</a></li>
+                <li><a class="menu-text menu-history menu-active" href="#">Historia</a></li>
+                <li><a class="menu-text menu-policy" href="#">Policy</a></li>
+                <li><a class="menu-text menu-accessibility" href="#">Tillgänglighet</a></li>
+                <li><a class="menu-text menu-faq" href="#">FAQ</a></li>
             </ul>
         </nav>
 
         <div class="about-us-space">
-            <div class="about-us-history">
+            <div class="about-us-history about-us-item">
                 <img src="img/oldcinema.jpg" alt="Bild på vår gamla biograf">
                 <h1>Historia</h1>
                 <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
@@ -53,11 +53,17 @@
                     vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
             </div>
 
-            <div class="about-us-accessibility">
+            <div class="about-us-policy about-us-item about-us-hide">
+            </div>
+
+            <div class="about-us-accessibility about-us-item about-us-hide">
                 <h1>Tillgänglighet</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis harum eligendi eaque, nemo, maiores est voluptatibus quas itaque ipsa amet illum dolore tempore. Eos iusto, esse rem nesciunt atque dolorum sit recusandae repellat culpa facere a similique eligendi, sint soluta fuga vitae ducimus! Et libero culpa fuga repellat! Enim.</p>
                 <h2>Film med syntolkning och uppläst svensk text</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis harum eligendi eaque, nemo, maiores est voluptatibus quas itaque ipsa amet illum dolore tempore. Eos iusto, esse rem nesciunt atque dolorum sit recusandae repellat culpa facere a similique eligendi, sint soluta fuga vitae ducimus! Et libero culpa fuga repellat! Enim.</p>
+            </div>
+
+            <div class="about-us-faq about-us-item about-us-hide">
             </div>
         </div>
 
@@ -88,6 +94,7 @@
                 </div>
             </div>
         </footer>
+        <script src="./aboutus.js"></script>
         <script src="https://kit.fontawesome.com/955d716fd8.js" crossorigin="anonymous"></script>
     </body>
 </html>

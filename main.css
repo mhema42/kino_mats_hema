@@ -237,6 +237,9 @@ Author: Marta Anna Todorovic */
 .about-us-nav .about-us-menu li .menu-text:focus {
   color: #d4af37;
 }
+.about-us-nav .about-us-menu li .menu-active {
+  color: #d4af37;
+}
 
 .about-us-space {
   background-color: #BB0000;
@@ -262,6 +265,9 @@ Author: Marta Anna Todorovic */
 .about-us-space .about-us-accessibility {
   margin: auto;
   width: 70%;
+}
+.about-us-space .about-us-hide {
+  display: none;
 }
 
 .hero-image {
