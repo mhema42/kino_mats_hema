@@ -193,7 +193,7 @@ Author: Simon Ljungström and Mats Hemå */
 }
 
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
-Author: Mats Hemå */
+Author: Mats Hemå &  Marta Anna Todorovic */
 .about-us-nav {
   background-color: #000;
 }
@@ -226,8 +226,6 @@ Author: Mats Hemå */
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
-  /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
-Author: Marta Anna Todorovic */
 }
 
 .about-us-nav .about-us-menu li .menu-text:hover {
@@ -246,7 +244,8 @@ Author: Marta Anna Todorovic */
   background-color: #BB0000;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
-  height: 70vh;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
   padding: 40px 0px 40px 0px;
 }
 
@@ -268,12 +267,11 @@ Author: Marta Anna Todorovic */
   width: 70%;
 }
 
-
 .about-us-space .about-us-policy {
   margin: auto;
   width: 70%;
 }
-  
+
 .about-us-space .about-us-faq {
   margin: auto;
   width: 70%;
