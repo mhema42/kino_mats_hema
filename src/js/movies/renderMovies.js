@@ -16,7 +16,9 @@ export default class Movie {
         const poster = document.createElement("img");
         poster.className ="movieCard-poster";
         poster.src = this.posterUrl; 
-        movieCard.append(poster)
+        poster.alt = `Movie poster of ${this.title} `;
+        movieCard.append(poster);
+        
 
         this.movieCard = movieCard; 
 
