@@ -1,25 +1,28 @@
 {
-    "name": "kino-ytterhogdal",
-    "version": "1.0.0",
-    "description": "",
-    "main": "bundle.js",
-    "scripts": {
-        "watch:js": "webpack --watch",
-        "watch:sass": "sass --watch --no-source-map src/main.scss main.css",
-        "start": "node app.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/matodorovic/kino-ytterhogdal.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "sass": "^1.43.4",
-        "webpack-cli": "^4.9.1"
-    },
-    "dependencies": {
-        "vscode": "^1.1.37",
-        "webpack": "^5.65.0"
-    }
+  "name": "kino-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmaambr/Kino-BE.git"
+  },
+  "author": "Emma Amberdal <https://github.com/emmaambr>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmaambr/Kino-BE/issues"
+  },
+  "homepage": "https://github.com/emmaambr/Kino-BE#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
