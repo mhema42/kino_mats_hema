@@ -1,29 +1,32 @@
-"use strict";
+import express from "express";
+import fs from "fs/promises";
 
-const fs = require('fs');
-const path = require('path');
-const http = require('http');
-const staticBasePath = './';
-const PORT = process.env.PORT || 5500;
+const app = express();
 
-const staticServe = function (req, res) {
-    let resolvedBase = path.resolve(staticBasePath);
-    let safeSuffix = path.normalize(req.url).replace(/^(\.\.[\/\\])+/, '');
-    let fileLoc = path.join(resolvedBase, safeSuffix);
-    fs.readFile(fileLoc, function (err, data) {
-        if (err) {
-            res.writeHead(404, 'Not Found');
-            res.write('404: File Not Found!');
-            return res.end();
-        }
-    res.statusCode = 200;
-    res.write(data);
-    return res.end();
-    });
-};
-
-const httpServer = http.createServer(staticServe);
-
-httpServer.listen(PORT, () => {
-    console.log("server listening on port " + PORT);
+app.get("/", async (req, res) => {
+    try {
+        const fileBuf = await fs.readFile("./index.html");
+        res.type("html");
+        res.send(fileBuf);
+    } catch (err) {
+        res.status(404).end();
+    }
 });
+
+app.get("/*", async (req, res) => {
+    try {
+        const fileName = req.path;
+        const fileType = fileName.split(".")[1];
+        const fileBuf = await fs.readFile(`./${fileName}`);
+        res.type(fileType);
+        res.send(fileBuf);
+    } catch (err) {
+        res.status(404).end();
+    }
+});
+
+app.use("/*", (req, res) => {
+    res.status(405).end();
+});
+
+app.listen(5080);
