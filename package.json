@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/emmaambr/Kino-BE#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "handlebars": "^4.7.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
