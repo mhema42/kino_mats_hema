@@ -350,6 +350,11 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   }
 }
 
+.movie-content {
+  background-color: #BB0000;
+  margin: 0;
+}
+
 body {
   margin: 0;
 }
