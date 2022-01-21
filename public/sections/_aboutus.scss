@@ -39,11 +39,10 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 }
 
 .about-us-space {
-    background-color: $primary-color;
     color: $secondary-color;
     font-family: $font-choice;
-    box-sizing: inherit;
     padding: 40px 0px 40px 0px;
+    min-height: calc(100vh - 400px);
 
     .about-us-history {
         margin: auto;

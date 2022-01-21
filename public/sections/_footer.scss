@@ -2,10 +2,10 @@
 Author: Mats Hemå */
 
 footer {
-    background-color: black; // change to sass variables
-    color: white; // change to sass variables
+    background-color: $third-color;
+    color: $secondary-color;
     font-family: Arial, Helvetica, sans-serif; 
-
+    
     h2 {
         font-size: large;
     }

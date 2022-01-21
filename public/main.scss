@@ -2,12 +2,18 @@
 @import 'sections/footer';
 @import 'sections/nav';
 @import 'sections/logo';
-@import 'sections/cards';
 @import 'sections/aboutus';
 @import 'sections/hero';
 @import 'sections/importantInfo';
 @import 'sections/index';
+@import 'sections/movie';
+
+html {
+    height: 100vh;
+}
 
 body {
     margin: 0;
+    height: 100%;
+    background-color: $primary-color;
 }
