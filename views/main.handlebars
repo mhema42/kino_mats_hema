@@ -11,8 +11,8 @@
     <ul class="current-movies">
         {{#each movies }}
         <li class="current-movie">
-            <a href="/movie/{{ this.id }}">
-                {{ this.title }}
+            <a href="/movies/{{ this.id }}">
+                {{ this.attributes.title }}
             </a>
         </li>
         {{/each}}
