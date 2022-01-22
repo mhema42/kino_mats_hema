@@ -20,7 +20,7 @@ app.get("/", async (req, res) => {
 
 app.get("/movie/:movieId", async (req, res) => {
     const movie = await loadMovie(req.params.movieId);
-    if (movie) {
+   if (movie) {
         res.render("movie", { movie });
     } else {
         res.status(404).render("404");
@@ -31,6 +31,13 @@ app.get("/about", async (req, res) => {
     res.render("about");
 });
 
+app.use("/404", async (req, res) => {
+    res.render("404");
+    res.status(404);
+});
+
 app.use("/", express.static("./public"));
 
 app.listen(5080);
+
+export default app;
