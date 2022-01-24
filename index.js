@@ -40,3 +40,5 @@ app.use("/404", async (req, res) => {
 app.use("/", express.static("./public"));
 
 app.listen(5080);
+
+export default app;
