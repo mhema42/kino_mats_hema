@@ -15,8 +15,12 @@ app.engine('handlebars', engine({
 }));
 
 app.get("/", async (req, res) => {
+    res.render("main");
+})
+
+app.get("/movies", async (req, res) => {
     const movies = await loadMovies();
-    res.render("main", { movies });
+    res.render("movies", { movies });
 })
 
 app.get("/movies/:movieId", async (req, res) => {

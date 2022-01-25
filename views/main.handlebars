@@ -1,20 +1,5 @@
-<section class="important-info">
-    <p class="important-info-text">Följande restriktioner för covid-19 gäller för denna biograf...</p>
-</section>
+<div class="movie-container"> 
 
-<section class="hero">
-    <div class="hero-image" alt="Red theater curtain"></div>
-</section>
+<h1 class="current-movie-title"> Aktuella filmer: </h1>
 
-<section class="movie-content">
-    <h1 class="current-title"> Aktuella filmer </h1>
-    <ul class="current-movies">
-        {{#each movies }}
-        <li class="current-movie">
-            <a href="/movies/{{ this.id }}">
-                {{ this.attributes.title }}
-            </a>
-        </li>
-        {{/each}}
-    </ul>
-</section>
+</div>

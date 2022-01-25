@@ -354,6 +354,12 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   text-decoration: underline;
 }
 
+.movie-container {
+  min-height: calc(100vh - 291px);
+  width: 70vw;
+  margin: auto;
+}
+
 html {
   height: 100vh;
 }

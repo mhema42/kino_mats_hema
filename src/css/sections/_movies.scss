@@ -1,0 +1,27 @@
+.movie-content {
+    margin: auto;
+    padding: 0;
+    width: 70%;
+    min-height: calc(100vh - 670px);
+
+    .current-title {
+        color: $secondary-color;
+    }
+    ul{
+        padding: 0;
+    }
+    .current-movie {
+        list-style-type: none;
+        padding: 5px 0px;
+
+        a{
+            color: $third-color; 
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        a:hover{
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+    }
+}
