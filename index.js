@@ -1,7 +1,7 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
-import { loadMovie, loadMovies } from "./src/script/movies.js";
+import { loadMovie, loadMovies } from "./public/script/movies.js";
 
 const app = express();
 
