@@ -5,7 +5,7 @@ async function loadData() {
     data.screen.forEach(showtime => {
         const li = document.createElement("li");
         const movieShowTime = document.createElement("span");
-        movieShowTime.innerText = showtime.time; 
+        movieShowTime.innerText = [ showtime.time.replace(/T(\T*)/, ", ") + ", " + showtime.room + ", " ]; 
         const movieTitle = document.createElement("a");
         movieTitle.innerText = showtime.title; 
         movieTitle.href = `/movies/${showtime.id}`;
