@@ -8,7 +8,6 @@ let reviewPageId = 0;
     const payload = await res.json();
     let arrayLength = payload.metaArrayData; 
     let pageNumber = reviewPageId + 1; 
-    console.log(arrayLength);
 
     const reviewTotal = document.querySelector(".reviewTotal");
     if(arrayLength >= 1) {
