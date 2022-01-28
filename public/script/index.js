@@ -1,4 +1,4 @@
-async function loadData() {
+(async () => {
     const res = await fetch("http://localhost:5080/api/screeningtime");
     const data = await res.json(); 
     
@@ -14,7 +14,5 @@ async function loadData() {
         li.append(movieTitle); 
         
         document.querySelector("#screening-list").append(li); 
-    })
-}; 
-
-loadData();
+    }); 
+})();
