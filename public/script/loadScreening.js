@@ -12,8 +12,6 @@ export async function getScreenings() {
   const now = new Date();
   const now2 = new Date();
   const result = new Date(now2.setDate(now2.getDate() + 6));
-  console.log(now); 
-  console.log(result); 
   const screen = (await loadScreenings())
   .filter(obj => {
     const screeningTime = new Date(obj.time);
