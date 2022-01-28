@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "nodemon .",
     "start": "node .",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "sass": "node-sass --watch src/css/main.scss public/main.css"
+
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,8 @@
     "express-handlebars": "^6.0.2",
     "handlebars": "^4.7.7",
     "marked": "^4.0.10",
-    "node-fetch": "^3.2.0"
+    "node-fetch": "^3.2.0",
+    "node-sass": "^7.0.1"
   },
   "devDependencies": {
     "jest": "^27.4.7",
