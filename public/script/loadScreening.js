@@ -24,17 +24,17 @@ export async function getScreenings() {
   }
 }
 
-/*export async function getScreenings() {
+export async function getScreeningsMovie() {
+  //const movieId = url.split('/').filter(e => e).slice(-1);
   const now = new Date();
   const screen = (await loadScreenings())
   .filter(obj => {
     const screeningTime = new Date(obj.time);
-    return screeningTime > now;
+    return screeningTime;
+    // > now;
   })
-  .slice(0, 10);
-
+  
   return {
     screen
   }
 }
-*/

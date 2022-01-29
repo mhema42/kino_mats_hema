@@ -3,7 +3,7 @@ import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
 import { loadMovie, loadMovies, loadReviews } from "./public/script/apiLoader.js";
-import { getScreenings } from "./public/script/loadScreening.js"; 
+import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 
 const app = express();
 
@@ -43,6 +43,14 @@ app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
             data: reviewArray[req.params.reviewPageId],
             metaArrayData: arrayLength
         })
+});
+
+app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
+    const screening = await getScreeningsMovie();
+
+    res.json(
+        screening
+    )
 }); 
 
 app.get("/movies", async (req, res) => {
