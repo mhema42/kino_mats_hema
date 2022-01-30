@@ -1,5 +1,11 @@
 .movie-container {
     min-height: calc(100vh - 291px);
-    width: 70vw;
+    width: 80vw;
+    background-color: $secondary-color;
     margin: auto;
+}
+
+.current-movie-title {
+    margin: 0;
+    padding: 40px 20px;
 }

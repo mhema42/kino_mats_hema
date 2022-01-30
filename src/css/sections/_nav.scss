@@ -15,7 +15,7 @@ header {
         a {
             &:hover {
                 color: $fourth-color;
-                box-shadow: 0.7rem 0.5rem 0.5rem $third-color;
+                box-shadow: 0px 0px 15px 1px $third-color;
             }
         }
 
@@ -45,7 +45,7 @@ header {
     
   /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
     Author: Marta Anna Todorovic */
-    &:hover {
-        box-shadow: 0.7rem 0.5rem 0.5rem $third-color;
+    &:hover {  
+        box-shadow: 0px 0px 15px 1px $third-color;
     }
 }
