@@ -31,8 +31,8 @@ export async function getScreeningsMovie(movieId) {
   .filter(obj => {
     const screeningTime = new Date(obj.time);
     const whichMovie = obj.id;
-    return whichMovie == movieId && screeningTime;
-    // add > now after screeningTime, when more screeningtimes are added in API;
+    return whichMovie == movieId && screeningTime > now;
+    // remove > now after screeningTime to show previous screeningtimes (no upcoming times in API for the moment);
   })
   
   return {
