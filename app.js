@@ -1,7 +1,7 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
-import { loadMovie, loadMovies, loadScreenings } from "./public/script/apiLoader.js";
+import api from "./public/script/apiLoader.js";
 import { getScreenings } from "./public/script/loadScreening.js"; 
 
 const app = express();
@@ -20,20 +20,18 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/api/screeningtime", async (req, res) => {
-    const screening = await getScreenings();
+    const screening = (await getScreenings(api));
 
-    res.json(
-        screening
-    )
+    res.json(screening)
 }); 
 
 app.get("/movies", async (req, res) => {
-    const movies = await loadMovies();
+    const movies = await api.loadMovies();
     res.render("movies", { movies });
 });
 
 app.get("/movies/:movieId", async (req, res) => {
-    const movie = await loadMovie(req.params.movieId);
+    const movie = await api.loadMovie(req.params.movieId);
     if (movie) {
         res.render("movie", { movie });
     } else {
