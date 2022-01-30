@@ -24,14 +24,15 @@ export async function getScreenings() {
   }
 }
 
-export async function getScreeningsMovie() {
-  //const movieId = url.split('/').filter(e => e).slice(-1);
+// filter list with all screeningtimes to only show upcoming screeningtimes for the chosen movie
+export async function getScreeningsMovie(movieId) {
   const now = new Date();
   const screen = (await loadScreenings())
   .filter(obj => {
     const screeningTime = new Date(obj.time);
-    return screeningTime;
-    // > now;
+    const whichMovie = obj.id;
+    return whichMovie == movieId && screeningTime;
+    // add > now after screeningTime, when more screeningtimes are added in API;
   })
   
   return {
