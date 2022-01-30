@@ -45,6 +45,7 @@ app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
         })
 });
 
+// route for screeningtime on movie page
 app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
     const screening = await getScreeningsMovie(req.params.movieId);
 

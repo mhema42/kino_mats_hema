@@ -57,7 +57,7 @@ let reviewPageId = 0;
     }     
 })();
 
-// fetch to our API for screening times for individual movies
+// fetch to local API for screening times for individual movies
 (async () => {
     const res = await fetch("http://localhost:5080/api/movies/" + movieId + "/screeningtime/");
     const data = await res.json(); 
