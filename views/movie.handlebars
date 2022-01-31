@@ -8,8 +8,9 @@
   {{/if }}
     <div class="submit-review">
       <form class="add-review">
-      <textarea class="review review-text" placeholder="Add your review here" name="comment"></textarea>
-      <select class="review" name="rating">
+      <textarea id="addComment" class="review review-text" placeholder="Add your review here" ></textarea>
+      <input type="hidden" value="{{ movie.id }}">
+      <select id="rate" class="review" >
         <option value="" hidden>Your rating here</option>
         <option value="0">0</option>
         <option value="1">1</option>
@@ -18,8 +19,8 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-      <input class="review" placeholder="Your name here" name="name">
-      <input id="addBtn" class="menu-btn button-review" type="submit" value="Submit">
+      <input id="addName" class="review" placeholder="Your name here">
+      <input id="addBtn" class="menu-btn button-review" type="submit">
       </form>
     </div>
     <div class="review-container"></div>  
