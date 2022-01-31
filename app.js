@@ -25,6 +25,23 @@ app.get("/api/screeningtime", async (req, res) => {
     res.json(screening)
 }); 
 
+app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
+    const review = await loadReviews(req.params.movieId);
+    let j = 0; 
+    const reviewArray = []; 
+
+    for(let i = 0; 0 < review.length; i+5) {
+            reviewArray[j] = review.splice(0, 5); 
+            j++; 
+        }
+        let arrayLength = reviewArray.length; 
+
+        res.json({
+            data: reviewArray[req.params.reviewPageId],
+            metaArrayData: arrayLength
+        })
+}); 
+
 app.get("/movies", async (req, res) => {
     const movies = await api.loadMovies();
     res.render("movies", { movies });

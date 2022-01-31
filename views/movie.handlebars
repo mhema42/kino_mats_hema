@@ -6,4 +6,12 @@
   {{#if movie.attributes.image }}
   <img class="movie-img" src="{{ movie.attributes.image.url }}">
   {{/if }}
+  <div class="review-container">
+    <p class="reviewTotal"></p>
+    <button class="menu-btn nextReviewButton">Next review page</button>
+    <button class="menu-btn previousReviewButton">Previous review page</button>
+    <div class="movie-review"></div>
+  </div>
 </div>
+
+<script type="module" src="/script/moviePage.js"></script>

@@ -88,8 +88,8 @@ header .main-menu {
 
 header .main-menu a:hover {
   color: #d4af37;
-  -webkit-box-shadow: 0.7rem 0.5rem 0.5rem #000;
-          box-shadow: 0.7rem 0.5rem 0.5rem #000;
+  -webkit-box-shadow: 0px 0px 15px 1px #000;
+          box-shadow: 0px 0px 15px 1px #000;
 }
 
 header .main-menu li {
@@ -118,8 +118,8 @@ header .main-menu li {
 }
 
 #search:hover {
-  -webkit-box-shadow: 0.7rem 0.5rem 0.5rem #000;
-          box-shadow: 0.7rem 0.5rem 0.5rem #000;
+  -webkit-box-shadow: 0px 0px 15px 1px #000;
+          box-shadow: 0px 0px 15px 1px #000;
 }
 
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
@@ -182,10 +182,12 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 }
 
 .about-us-space {
-  color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   padding: 40px 0px 40px 0px;
   min-height: calc(100vh - 400px);
+  background-color: #fff;
+  width: 80vw;
+  margin: auto;
 }
 
 .about-us-space .about-us-history {
@@ -291,17 +293,22 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 
 .movie-content {
   margin: auto;
-  padding: 0;
-  width: 70%;
+  padding: 20px;
+  width: 80vw;
+  background-color: #fff;
   min-height: calc(100vh - 670px);
 }
 
 .movie-content .current-title {
-  color: #fff;
+  font-size: 2rem;
+  color: #000;
+  margin: 0;
+  padding: 20px 0px 20px 20px;
 }
 
 .movie-content ul {
-  padding: 0;
+  padding: 0px 0px 20px 20px;
+  margin: 0;
 }
 
 .movie-content .current-movie {
@@ -322,13 +329,20 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 
 .movie {
   margin: auto;
-  padding: 0;
-  width: 70%;
+  padding: 20px;
+  background-color: #fff;
+  width: 70vw;
   min-height: calc(100vh - 310px);
 }
 
 .movie .movie-title {
-  color: #fff;
+  color: #000;
+  padding: 20px 0px 0px 20px;
+  margin: 0;
+}
+
+.movie .intro {
+  padding: 0px 20px;
 }
 
 .movie .movie-img {
@@ -337,8 +351,17 @@ Author: Mats Hemå &  Marta Anna Todorovic */
           box-shadow: 0px 0px 15px 1px black;
   height: 400px;
   width: auto;
-  margin: 20px 0 20px 0;
+  margin: 20px;
   float: none;
+}
+
+.movie .review-container {
+  margin-top: 3rem;
+  padding: 20px;
+}
+
+.movie .review-container .movie-review {
+  margin-top: 1rem;
 }
 
 .error-container {
@@ -356,17 +379,24 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 
 .movie-container {
   min-height: calc(100vh - 291px);
-  width: 70vw;
+  width: 80vw;
+  background-color: #fff;
   margin: auto;
+}
+
+.current-movie-title {
+  margin: 0;
+  padding: 40px 20px;
 }
 
 html {
   height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   margin: 0;
   height: 100%;
-  background-color: #BB0000;
+  background-color: rgba(211, 211, 211, 0.801);
 }
 /*# sourceMappingURL=main.css.map */

@@ -12,10 +12,11 @@
 
 html {
     height: 100vh;
+    font-family: $font-choice;
 }
 
 body {
     margin: 0;
     height: 100%;
-    background-color: $primary-color;
+    background-color: $fifth-color;
 }
