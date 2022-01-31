@@ -6,6 +6,7 @@ export class Screenings {
     this.id = data.attributes.movie.data.id; 
     this.room = data.attributes.room; 
     this.time = data.attributes.start_time;
+    this.imdbRating = data.attributes.imdbId;
   }
 }
 export async function getScreenings() {

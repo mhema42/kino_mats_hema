@@ -5,7 +5,11 @@ let reviewPageId = 0;
 
 (async function loadReview () {
     const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" +reviewPageId); 
+    const res2 = await fetch("http://localhost:5080/api/movies/"+ movieId + "/ratings/"); 
     const payload = await res.json();
+    const payload2 = await res2.json();
+    console.log(payload2);
+    document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + imdb;
     let arrayLength = payload.metaArrayData; 
     let pageNumber = reviewPageId + 1; 
 
@@ -57,30 +61,9 @@ let reviewPageId = 0;
     }     
   })();
 
-  
-  
- fetch("https://imdb8.p.rapidapi.com/title/get-ratings?tconst=tt0468569", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "imdb8.p.rapidapi.com",
-		"x-rapidapi-key": "67baa3e498mshe9d27c22177b7a4p13141bjsnbc2fd5344d9d"
-	}
-})
-.then(response => {	
-    return response.json();
-})
-.then(data => {
-    let imdbRating = data.rating;
-    let imdb = imdbRating / 2;
-    document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + imdb; 
-})
-
-.catch(err => {
-	console.error(err);
-});
+ 
 
 
-// /movies("https://imdb8.p.rapidapi.com/title/get-ratings?tconst=" + imdbTitle )
 
 
 
