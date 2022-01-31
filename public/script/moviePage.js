@@ -59,7 +59,7 @@ let reviewPageId = 0;
 
 // fetch to local API for screening times for individual movies
 (async () => {
-    const res = await fetch("http://localhost:5080/api/movies/" + movieId + "/screeningtime/");
+    const res = await fetch("http://localhost:5080/api/movies/" + movieId + "/screeningtime");
     const data = await res.json(); 
 
     data.screen.forEach(showtime => {

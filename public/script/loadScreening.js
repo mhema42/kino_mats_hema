@@ -1,4 +1,5 @@
 import { loadScreenings } from "./apiLoader.js";
+import { loadScreeningsMovie } from "./apiLoader.js";
 
 export class Screenings {
   constructor (data) {
@@ -27,12 +28,10 @@ export async function getScreenings() {
 // filter list with all screeningtimes to only show upcoming screeningtimes for the chosen movie
 export async function getScreeningsMovie(movieId) {
   const now = new Date();
-  const screen = (await loadScreenings())
+  const screen = (await loadScreeningsMovie(movieId))
   .filter(obj => {
     const screeningTime = new Date(obj.time);
-    const whichMovie = obj.id;
-    return whichMovie == movieId && screeningTime > now;
-    // remove > now after screeningTime to show previous screeningtimes (no upcoming times in API for the moment);
+    return screeningTime > now;
   })
   
   return {
