@@ -199,6 +199,32 @@ Author: Mats Hemå &  Marta Anna Todorovic */
     width: auto;
     margin: 20px 0 20px 0;
     float: none; }
+  .movie .submit-review {
+    margin-top: 3rem; }
+    .movie .submit-review .add-review {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 10px 30px;
+      border: 2px solid #fff;
+      border-radius: 6px;
+      box-shadow: 0px 0px 10px;
+      text-align: center;
+      width: 25rem; }
+      .movie .submit-review .add-review .review {
+        margin: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 5px;
+        border-radius: 6px;
+        box-shadow: 0px 0px 10px;
+        box-sizing: border-box; }
+      .movie .submit-review .add-review .review-text {
+        height: 4rem; }
+      .movie .submit-review .add-review .button-review {
+        box-sizing: border-box;
+        width: max-content;
+        margin: 0 auto; }
   .movie .review-container {
     margin-top: 3rem; }
     .movie .review-container .movie-review {

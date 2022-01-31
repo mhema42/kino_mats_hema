@@ -6,7 +6,23 @@
   {{#if movie.attributes.image }}
   <img class="movie-img" src="{{ movie.attributes.image.url }}">
   {{/if }}
-  <div class="review-container">
+    <div class="submit-review">
+      <form class="add-review">
+      <textarea class="review review-text" placeholder="Add your review here" name="comment"></textarea>
+      <select class="review" name="rating">
+        <option value="" hidden>Your rating here</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input class="review" placeholder="Your name here" name="name">
+      <input id="addBtn" class="menu-btn button-review" type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="review-container"></div>  
     <p class="reviewTotal"></p>
     <button class="menu-btn nextReviewButton">Next review page</button>
     <button class="menu-btn previousReviewButton">Previous review page</button>
