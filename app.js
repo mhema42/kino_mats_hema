@@ -3,6 +3,7 @@ import { engine } from "express-handlebars";
 import { marked } from "marked";
 import api from "./public/script/apiLoader.js";
 import { getScreenings } from "./public/script/loadScreening.js"; 
+import { loadReviews } from "./public/script/apiLoader.js";
 
 const app = express();
 

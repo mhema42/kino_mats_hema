@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { Screenings } from "./loadScreening.js"; 
+// import { Screenings } from "./loadScreening.js"; 
 import reviews from "./loadReviews.js"; 
 
 const API_BASE = 'https://lernia-kino-cms.herokuapp.com/api';

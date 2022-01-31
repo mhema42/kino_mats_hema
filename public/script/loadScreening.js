@@ -6,7 +6,7 @@ export async function getScreenings(api) {
     .filter(obj => {
     //const screeningTime = new Date(obj.time);
       const screeningTime = new Date(obj.attributes.start_time);
-      return screeningTime > now; // && screeningTime < result;
+      return screeningTime //> now && screeningTime < result;
     })
     .slice(0, 10);
  
