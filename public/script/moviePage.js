@@ -3,7 +3,8 @@ const url = document.location + '';
 const movieId = url.split('/').filter(e => e).slice(-1);
 let reviewPageId = 0; 
 
-(async function loadReview () {
+
+async function loadReview() {
     const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" +reviewPageId); 
     const payload = await res.json();
     let arrayLength = payload.metaArrayData; 
@@ -15,7 +16,6 @@ let reviewPageId = 0;
     } else {
         reviewTotal.innerHTML = "There are currently no reviews for the selected movie, so you could be the first one to review it ;)"
     }
-    
     
     const nextReviewButton = document.querySelector(".nextReviewButton");
     nextReviewButton.onclick = function nextReviewPage () {
@@ -55,7 +55,8 @@ let reviewPageId = 0;
             document.querySelector(".movie-review").append(li);
         });    
     }     
-})();
+  };
+  loadReview();
 
 // fetch to local API for screening times for individual movies
 (async () => {
@@ -77,3 +78,26 @@ let reviewPageId = 0;
         document.querySelector(".screenings-for-each-movie").append(li); 
     }); 
 })();
+document.querySelector("#addBtn").onclick = async (ev) => {
+    ev.preventDefault();
+    const rating = document.querySelector("#rate").value;
+    const comment = document.querySelector("#addComment").value;
+    const author = document.querySelector("#addName").value;
+    console.log(movieId, rating, comment, author);
+
+    await fetch(`/api/movies/${movieId}/reviews`, { 
+        method: "POST",
+        mode: "cors",
+        credentials: "same-origin",
+        headers: {
+             "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            movieId: movieId,
+            comment: comment,
+            rating: rating,
+            name: author
+        }) 
+    });
+    loadReview();
+};
