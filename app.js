@@ -26,22 +26,34 @@ app.get("/api/screeningtime", async (req, res) => {
     res.json(screening)
 }); 
 
-app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
-    const review = await loadReviews(req.params.movieId);
-    let j = 0; 
-    const reviewArray = []; 
+//used for the caching function for the review page
+let cachTimer = 1; 
+let review; 
+let reviewArray = []; 
+let catchedMovieId = 0.1; 
 
-    for(let i = 0; 0 < review.length; i+5) {
-            reviewArray[j] = review.splice(0, 5); 
-            j++; 
-        }
-        let arrayLength = reviewArray.length; 
+app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
+    let currentTime = new Date().toLocaleString(); 
+
+    if(currentTime >= cachTimer || cachTimer === 1 || catchedMovieId != req.params.movieId){
+        review = await loadReviews(req.params.movieId);
+        cachTimer = new Date(new Date().getTime() + 2*60*1000).toLocaleString();
+        catchedMovieId = req.params.movieId; 
+        reviewArray = []; 
+    }
+        let j = 0; 
+        for(let i = 0; 0 < review.length; i+5) {
+                reviewArray[j] = review.splice(0, 5); 
+                j++; 
+            }
+
+       let arrayLength = reviewArray.length; 
 
         res.json({
             data: reviewArray[req.params.reviewPageId],
             metaArrayData: arrayLength
         })
-});
+    }); 
 
 // route for screeningtimes on movie page
 app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
