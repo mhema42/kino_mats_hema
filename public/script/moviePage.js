@@ -1,4 +1,3 @@
-
 const url = document.location + '';
 const movieId = url.split('/').filter(e => e).slice(-1);
 let reviewPageId = 0; 
@@ -47,12 +46,12 @@ async function loadReview() {
             const rating = document.createElement("a");
             rating.innerText = "Rating: " + review.rating + " "; 
             const comment = document.createElement("a");
-            comment.innerText = "comment: " + review.comment; 
+            comment.innerText = "Comment: " + review.comment; 
             
             if(author) {li.append(author)}; 
             if(rating) {li.append(rating)}; 
             if(comment) {li.append(comment)}; 
-            document.querySelector(".movie-review").append(li);
+            document.querySelector(".movie-review").prepend(li);
         });    
     }     
   };
@@ -78,6 +77,8 @@ async function loadReview() {
         document.querySelector(".screenings-for-each-movie").append(li); 
     }); 
 })();
+
+
 document.querySelector("#addBtn").onclick = async (ev) => {
     ev.preventDefault();
     const rating = document.querySelector("#rate").value;
@@ -99,5 +100,10 @@ document.querySelector("#addBtn").onclick = async (ev) => {
             name: author
         }) 
     });
+
+    document.querySelector("#rate").selectedIndex = 0;  
+    document.querySelector("#addComment").value = "";
+    document.querySelector("#addName").value = "";
+
     loadReview();
 };

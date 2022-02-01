@@ -7,7 +7,7 @@
   <img class="movie-img" src="{{ movie.attributes.image.url }}">
   {{/if }}
     <div class="submit-review">
-      <form class="add-review">
+      <form id="frm" class="add-review">
       <textarea id="addComment" class="review review-text" placeholder="Add your review here" ></textarea>
       <input type="hidden" value="{{ movie.id }}">
       <select id="rate" class="review" >

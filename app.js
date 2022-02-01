@@ -4,6 +4,7 @@ import { marked } from "marked";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
 import { loadReviews } from "./public/script/apiLoader.js";
+import fetch from "node-fetch";
 
 const app = express();
 
