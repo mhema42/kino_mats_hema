@@ -8,7 +8,7 @@ export async function getScreenings(api) {
     .filter(obj => {
     //const screeningTime = new Date(obj.time);
       const screeningTime = new Date(obj.attributes.start_time);
-      return screeningTime //> now && screeningTime < result;
+      return screeningTime > now // && screeningTime < result;
     })
     .slice(0, 10);
  
@@ -41,7 +41,6 @@ export async function getScreeningsMovie(movieId) {
         time: obj.attributes.start_time,
         room: obj.attributes.room,
         title: obj.attributes.movie.data.attributes.title
-        
       };
     }),
   };

@@ -61,7 +61,6 @@ let reviewPageId = 0;
 (async () => {
     const res = await fetch("http://localhost:5080/api/movies/" + movieId + "/screeningtime");
     const data = await res.json(); 
-    console.log(data);
 
     data.data.forEach(showtime => {
         const li = document.createElement("li");

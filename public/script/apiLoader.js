@@ -17,7 +17,7 @@ export async function loadMovie(id) {
 }
 
 export async function loadScreenings() {
-  const res = await fetch(API_BASE + '/screenings?populate=movie');
+  const res = await fetch(API_BASE + '/screenings?populate=movie&pagination%5Blimit%5D=100');
   const payload = await res.json();
   return payload.data;
 }
