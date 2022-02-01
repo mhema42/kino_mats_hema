@@ -61,8 +61,9 @@ let reviewPageId = 0;
 (async () => {
     const res = await fetch("http://localhost:5080/api/movies/" + movieId + "/screeningtime");
     const data = await res.json(); 
+    console.log(data);
 
-    data.screen.forEach(showtime => {
+    data.data.forEach(showtime => {
         const li = document.createElement("li");
         const movieShowTime = document.createElement("span");
         movieShowTime.innerText = [ showtime.time.replace(/T(\T*)/, ", ") + ", " + showtime.room + ", " ];

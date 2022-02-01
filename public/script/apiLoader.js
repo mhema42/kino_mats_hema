@@ -25,7 +25,7 @@ export async function loadScreenings() {
 export async function loadScreeningsMovie(movieId) {
   const res = await fetch(API_BASE + "/screenings?populate=movie&filters[movie]=" + movieId);
   const payload = await res.json();
-  return payload.data.map(da => new Screenings(da));
+  return payload.data;
 }
 
 export async function loadReviews(movieId) {

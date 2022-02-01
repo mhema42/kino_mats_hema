@@ -1,3 +1,5 @@
+import { loadScreeningsMovie } from "./apiLoader.js";
+
 export async function getScreenings(api) {
   const now = new Date();
   //const now2 = new Date();
@@ -28,12 +30,19 @@ export async function getScreenings(api) {
 export async function getScreeningsMovie(movieId) {
   const now = new Date();
   const screen = (await loadScreeningsMovie(movieId))
-  .filter(obj => {
-    const screeningTime = new Date(obj.time);
-    return screeningTime > now;
-  })
+    .filter(obj => {
+      const screeningTime = new Date(obj.attributes.start_time);
+      return screeningTime > now;
+    })
   
   return {
-    screen
-  }
+    data: screen.map(obj => {
+      return {
+        time: obj.attributes.start_time,
+        room: obj.attributes.room,
+        title: obj.attributes.movie.data.attributes.title
+        
+      };
+    }),
+  };
 }
