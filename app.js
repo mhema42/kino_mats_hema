@@ -1,9 +1,9 @@
 import express from "express";
-
 import { engine } from "express-handlebars";
 import { marked } from "marked";
-import { loadMovie, loadMovies, loadReviews } from "./public/script/apiLoader.js";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
+import api from "./public/script/apiLoader.js";
+import { loadReviews } from "./public/script/apiLoader.js";
 
 const app = express();
 
@@ -21,11 +21,9 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/api/screeningtime", async (req, res) => {
-    const screening = await getScreenings();
+    const screening = (await getScreenings(api));
 
-    res.json(
-        screening
-    )
+    res.json(screening)
 }); 
 
 app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
@@ -55,12 +53,12 @@ app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
 }); 
 
 app.get("/movies", async (req, res) => {
-    const movies = await loadMovies();
+    const movies = await api.loadMovies();
     res.render("movies", { movies });
 });
 
 app.get("/movies/:movieId", async (req, res) => {
-    const movie = await loadMovie(req.params.movieId);
+    const movie = await api.loadMovie(req.params.movieId);
     if (movie) {
         res.render("movie", { movie });
     } else {
