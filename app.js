@@ -1,8 +1,8 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
+import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
-import { getScreenings } from "./public/script/loadScreening.js"; 
 import { loadReviews } from "./public/script/apiLoader.js";
 
 const app = express();
@@ -41,6 +41,15 @@ app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
             data: reviewArray[req.params.reviewPageId],
             metaArrayData: arrayLength
         })
+});
+
+// route for screeningtimes on movie page
+app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
+    const screening = await getScreeningsMovie(req.params.movieId);
+
+    res.json(   
+        screening
+    )
 }); 
 
 app.get("/movies", async (req, res) => {

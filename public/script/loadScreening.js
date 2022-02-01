@@ -24,17 +24,16 @@ export async function getScreenings(api) {
   };
 }
 
-/*export async function getScreenings() {
+// filter list with all screeningtimes to only show upcoming screeningtimes for the chosen movie
+export async function getScreeningsMovie(movieId) {
   const now = new Date();
-  const screen = (await loadScreenings())
+  const screen = (await loadScreeningsMovie(movieId))
   .filter(obj => {
     const screeningTime = new Date(obj.time);
     return screeningTime > now;
   })
-  .slice(0, 10);
-
+  
   return {
     screen
   }
 }
-*/
