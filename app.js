@@ -60,10 +60,16 @@ app.get("/movies/:movieId", async (req, res) => {
 });
 
 app.get("/api/movies/:movieId/ratings/", async (req, res) => {
-    const data = await loadRating(req.params.movieId);   
-    console.log(data.attributes.imdbId);
-    const imdb = await loadRatings(data.attributes.imdbId);
-    console.log(imdb);
+    const data = await loadRating(req.params.movieId);       
+    const id = data.attributes.imdbId;  
+    const imdb = await loadRatings(id);      
+    console.log(imdb)    
+   
+    res.json({
+        rating: imdb
+        
+    })
+    
            
 }); 
 

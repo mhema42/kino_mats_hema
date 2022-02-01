@@ -32,6 +32,5 @@ export async function loadReviews(movieId) {
 export async function loadRating(movieId) {
   const res = await fetch(API_BASE + "/movies/" + movieId);
   const payload = await res.json();
-  console.log(payload)
   return payload.data;
 }
