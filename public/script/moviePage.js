@@ -7,8 +7,8 @@ let reviewPageId = 0;
     const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" +reviewPageId); 
     const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings/"); 
     const payload = await res.json();
-    const payload2 = await res2.json();
-    document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + payload2;
+    const imdbR = await res2.json();    
+    document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + JSON.stringify(imdbR.rating);
     let arrayLength = payload.metaArrayData; 
     let pageNumber = reviewPageId + 1; 
 
@@ -17,8 +17,7 @@ let reviewPageId = 0;
         reviewTotal.innerHTML = "Review page " +pageNumber + "/ " +arrayLength;
     } else {
         reviewTotal.innerHTML = "There are currently no reviews for the selected movie, so you could be the first one to review it ;)"
-    }
-    
+    }    
     
     const nextReviewButton = document.querySelector(".nextReviewButton");
     nextReviewButton.onclick = function nextReviewPage () {
