@@ -61,7 +61,7 @@ app.get("/movies/:movieId", async (req, res) => {
 
 app.use(express.json());
 
-app.post("/api/reviews", async (req, res) => {
+app.post("/api/movies/:movieId/reviews", async (req, res) => {
     const response = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews", {
     method: "POST",
     headers: {
@@ -78,7 +78,7 @@ app.post("/api/reviews", async (req, res) => {
     .then(res => {
       console.log(req.body);
       console.log(res);
-      return res.json();
+      return res.json();  
     });
     res.status(201).end();
 });

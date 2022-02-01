@@ -4,7 +4,7 @@ const movieId = url.split('/').filter(e => e).slice(-1);
 let reviewPageId = 0; 
 
 
-(async function loadReview() {
+async function loadReview() {
     const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" +reviewPageId); 
     const payload = await res.json();
     let arrayLength = payload.metaArrayData; 
@@ -55,20 +55,21 @@ let reviewPageId = 0;
             document.querySelector(".movie-review").append(li);
         });    
     }     
-  })(); 
+  };
+  loadReview();
 
 
-const submitBtn = document.querySelector("#addBtn");
-
-submitBtn.addEventListener("click", async (ev) => {
+document.querySelector("#addBtn").onclick = async (ev) => {
     ev.preventDefault();
     const rating = document.querySelector("#rate").value;
     const comment = document.querySelector("#addComment").value;
     const author = document.querySelector("#addName").value;
     console.log(movieId, rating, comment, author);
 
-    await fetch("http://localhost:5080/api/reviews", { 
+    await fetch(`/api/movies/${movieId}/reviews`, { 
         method: "POST",
+        mode: "cors",
+        credentials: "same-origin",
         headers: {
              "Content-Type": "application/json",
         },
@@ -77,7 +78,7 @@ submitBtn.addEventListener("click", async (ev) => {
             comment: comment,
             rating: rating,
             name: author
-        }), 
-    }    
-); 
-});
+        }) 
+    });
+    loadReview();
+};
