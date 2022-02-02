@@ -4,6 +4,7 @@ import { marked } from "marked";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
 import { loadReviews } from "./public/script/apiLoader.js";
+import fetch from "node-fetch";
 
 const app = express();
 
@@ -62,6 +63,30 @@ app.get("/movies/:movieId", async (req, res) => {
     } else {
         res.status(404).render("404");
     }
+});
+
+app.use(express.json());
+
+app.post("/api/movies/:movieId/reviews", async (req, res) => {
+    const response = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify( {
+      data: {
+        author: req.body.name,
+        comment: req.body.comment,
+        rating: req.body.rating,
+        movie: req.params.movieId,
+      }
+    }) })
+    .then(res => {
+      console.log(req.body);
+      console.log(res);
+      return res.json();  
+    });
+    res.status(201).end();
 });
 
 app.get("/about", async (req, res) => {
