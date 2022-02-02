@@ -35,8 +35,8 @@ app.get("/api/screeningtime", async (req, res) => {
 let cachTimer = 1; 
 let review; 
 let reviewArray = []; 
-let catchedMovieId = 0.1; 
-let catchedPageNumber; 
+let cachedMovieId = 0.1; 
+let cachedPageNumber;   
 let pageTotal; 
 let lastPage; 
 let j = 0; 
@@ -45,16 +45,16 @@ let reviewIndex = 1;
 app.get("/api/movies/:movieId/reviews/:actualPage/:reviewPageId", async (req, res) => {
     let currentTime = new Date().toLocaleString(); 
 
-    if(catchedMovieId != req.params.movieId) {reviewArray.splice(0, reviewArray.length); j = 0;}
-    if(currentTime >= cachTimer || cachTimer === 1 || catchedMovieId != req.params.movieId || catchedPageNumber < req.params.actualPage){
+    if(cachedMovieId != req.params.movieId) {reviewArray.splice(0, reviewArray.length); j = 0;}
+    if(currentTime >= cachTimer || cachTimer === 1 || cachedMovieId != req.params.movieId || cachedPageNumber < req.params.actualPage){
         let data = await loadReviews(req.params.movieId, req.params.actualPage);
         pageTotal = data.meta.pagination.total;
         lastPage = data.meta.pagination.pageCount;
         review = data.data.map(r => new reviews(r));
-        
+
         cachTimer = new Date(new Date().getTime() + 2*60*1000).toLocaleString(); 
-        catchedMovieId = req.params.movieId; 
-        catchedPageNumber = data.meta.pagination.page;
+        cachedMovieId = req.params.movieId; 
+        cachedPageNumber = data.meta.pagination.page;
     }
         for(let i = 0; i < review.length; i+5) {
                 reviewArray[j] = review.splice(0, 5);
@@ -62,9 +62,9 @@ app.get("/api/movies/:movieId/reviews/:actualPage/:reviewPageId", async (req, re
             }
 
        let arrayLength = reviewArray.length; 
-       let remove = parseInt(catchedPageNumber); 
+       let remove = parseInt(cachedPageNumber); 
 
-       if(catchedPageNumber > 1) {reviewIndex = parseInt(req.params.reviewPageId) + parseInt(catchedPageNumber) -remove}
+       if(cachedPageNumber > 1) {reviewIndex = parseInt(req.params.reviewPageId) + parseInt(cachedPageNumber) -remove}
        else {reviewIndex = req.params.reviewPageId};
 
         res.json({

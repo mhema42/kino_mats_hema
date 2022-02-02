@@ -13,9 +13,11 @@ async function loadReview () {
     payload = await res.json();
     let arrayLength = payload.currentArrayLength;
     lastPage = payload.lastPage; 
+
     totalArrayLength = Math.ceil(payload.totalArrayLength / 5); 
     let pageNumber = reviewPageId + 1; 
     let intervalsVariable = actualPage * 5; 
+    console.log(totalArrayLength);
 
     const reviewTotal = document.querySelector(".reviewTotal");
     if(arrayLength >= 1) {
@@ -130,4 +132,9 @@ document.querySelector("#addBtn").onclick = async (ev) => {
     document.querySelector("#rate").selectedIndex = 0;  
     document.querySelector("#addComment").value = "";
     document.querySelector("#addName").value = "";
+
+    
+    actualPage = lastPage; 
+    reviewPageId = totalArrayLength  -1; 
+    loadReview(); 
 };
