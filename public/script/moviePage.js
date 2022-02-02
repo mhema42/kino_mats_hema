@@ -2,10 +2,12 @@ const url = document.location + '';
 const movieId = url.split('/').filter(e => e).slice(-1);
 let reviewPageId = 0; 
 
-
 async function loadReview() {
     const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" +reviewPageId); 
+    const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings/"); 
     const payload = await res.json();
+    const imdbR = await res2.json();    
+    document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + JSON.stringify(imdbR.rating);
     let arrayLength = payload.metaArrayData; 
     let pageNumber = reviewPageId + 1; 
 
@@ -77,13 +79,11 @@ async function loadReview() {
     }); 
 })();
 
-
 document.querySelector("#addBtn").onclick = async (ev) => {
     ev.preventDefault();
     const rating = document.querySelector("#rate").value;
     const comment = document.querySelector("#addComment").value;
     const author = document.querySelector("#addName").value;
-    console.log(movieId, rating, comment, author);
 
     await fetch(`/api/movies/${movieId}/reviews`, { 
         method: "POST",

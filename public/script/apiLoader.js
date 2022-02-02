@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-// import { Screenings } from "./loadScreening.js"; 
 import reviews from "./loadReviews.js"; 
 
 const API_BASE = 'https://lernia-kino-cms.herokuapp.com/api';
@@ -34,8 +33,17 @@ export async function loadReviews(movieId) {
   return payload.data.map(r => new reviews(r)); 
 }
 
+export async function loadRating(movieId) {
+  const res = await fetch(API_BASE + "/movies/" + movieId);
+  const payload = await res.json();
+  return payload.data;
+}
+
 export default {
   loadMovies: loadMovies,
   loadMovie: loadMovie,
   loadScreenings: loadScreenings,
+  loadReviews: loadReviews,
+  loadRating: loadRating,
+  loadScreeningsMovie: loadScreeningsMovie
 };

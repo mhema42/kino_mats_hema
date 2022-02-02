@@ -1,10 +1,11 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
+import fetch from "node-fetch";
+
+import loadRatings from "./public/script/loadRatings.js";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
-import { loadReviews } from "./public/script/apiLoader.js";
-import fetch from "node-fetch";
 
 const app = express();
 
@@ -64,6 +65,15 @@ app.get("/movies/:movieId", async (req, res) => {
         res.status(404).render("404");
     }
 });
+
+app.get("/api/movies/:movieId/ratings/", async (req, res) => {
+    const data = await loadRating(req.params.movieId);       
+    const id = data.attributes.imdbId;  
+    const imdb = await loadRatings(id);    
+    res.json({
+    rating: imdb        
+    })            
+}); 
 
 app.use(express.json());
 
