@@ -25,10 +25,10 @@ let actualPage = 1;
     
     const nextReviewButton = document.querySelector(".nextReviewButton");
     nextReviewButton.onclick = function nextReviewPage () {
-        if(reviewPageId +1 < arrayLength){
+        if(reviewPageId +1 < arrayLength & reviewPageId +1 < totalArrayLength){
             reviewPageId++;  
         } else { 
-            if (pageNumber >= arrayLength) {
+            if (pageNumber >= arrayLength & reviewPageId +1 < totalArrayLength) {
                 actualPage++; 
                 reviewPageId++;  
             }
@@ -43,6 +43,7 @@ let actualPage = 1;
             reviewPageId--;
             if (pageNumber <= arrayLength & actualPage > 1) {
                 actualPage--; 
+                reviewPageId--;
         }   
         } else {
             reviewPageId;  

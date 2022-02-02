@@ -29,9 +29,9 @@ export async function loadScreeningsMovie(movieId) {
 }
 
 export async function loadReviews(movieId, pageCount) {
-  //&pagination[pageSize]=100
-  const res = await fetch(API_BASE + "/reviews?pagination[page]=" + pageCount + "&filters[movie]=" + movieId);
+  const res = await fetch(API_BASE + "/reviews?pagination[page]=" + pageCount + "&filters[movie]="+ movieId);
   let payload = await res.json();
+  console.log("Request from Richards api");
   return payload; 
 }
 

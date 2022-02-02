@@ -32,9 +32,10 @@ let cachTimer = 1;
 let review; 
 let reviewArray = []; 
 let catchedMovieId = 0.1; 
-let catchedPageNumber = 0.1; 
+let catchedPageNumber;  
 let pageTotal; 
 let j = 0; 
+let reviewIndex = 1; 
 
 app.get("/api/movies/:movieId/reviews/:actualPage/:reviewPageId", async (req, res) => {
     let currentTime = new Date().toLocaleString(); 
@@ -43,19 +44,21 @@ app.get("/api/movies/:movieId/reviews/:actualPage/:reviewPageId", async (req, re
         let data = await loadReviews(req.params.movieId, req.params.actualPage);
         pageTotal = data.meta.pagination.total;
         review = data.data.map(r => new reviews(r)); 
-
-        cachTimer = new Date(new Date().getTime() + 2*60*1000).toLocaleString();
+        
+        cachTimer = new Date(new Date().getTime() + 2*60*1000).toLocaleString(); 
         catchedMovieId = req.params.movieId; 
         catchedPageNumber = data.meta.pagination.page;
     }
-        
+        console.log(catchedPageNumber);
         for(let i = 0; i < review.length; i+5) {
                 reviewArray[j] = review.splice(0, 5);
                 j++; 
             }
 
        let arrayLength = reviewArray.length; 
-       let reviewIndex = req.params.reviewPageId -1 + catchedPageNumber; 
+
+       if(catchedPageNumber > 1) {reviewIndex = parseInt(req.params.reviewPageId) + parseInt(catchedPageNumber) -2}
+       else {reviewIndex = req.params.reviewPageId};
 
         res.json({
             data: reviewArray[reviewIndex],
