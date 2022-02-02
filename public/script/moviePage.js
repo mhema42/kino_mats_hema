@@ -2,16 +2,22 @@
 const url = document.location + '';
 const movieId = url.split('/').filter(e => e).slice(-1);
 let reviewPageId = 0; 
+let actualPage = 1; 
 
 (async function loadReview () {
-    const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" +reviewPageId); 
+    const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" + actualPage + "/"+ reviewPageId); 
     const payload = await res.json();
-    let arrayLength = payload.metaArrayData; 
+    let arrayLength = payload.currentArrayLength;
+    let totalArrayLength = Math.ceil(payload.totalArrayLength / 5); 
+    console.log(arrayLength + totalArrayLength); 
     let pageNumber = reviewPageId + 1; 
+
+    console.log("actualpage:" + actualPage); 
+    console.log("arrayLength:" + totalArrayLength); 
 
     const reviewTotal = document.querySelector(".reviewTotal");
     if(arrayLength >= 1) {
-        reviewTotal.innerHTML = "Review page " +pageNumber + "/ " +arrayLength;
+        reviewTotal.innerHTML = "Review page " +pageNumber + "/ " +totalArrayLength;
     } else {
         reviewTotal.innerHTML = "There are currently no reviews for the selected movie, so you could be the first one to review it ;)"
     }
@@ -22,6 +28,10 @@ let reviewPageId = 0;
         if(reviewPageId +1 < arrayLength){
             reviewPageId++;  
         } else { 
+            if (pageNumber >= arrayLength) {
+                actualPage++; 
+                reviewPageId++;  
+            }
             reviewPageId;
         } 
         loadReview(); 
@@ -30,7 +40,10 @@ let reviewPageId = 0;
     const previousReviewButton = document.querySelector(".previousReviewButton");
     previousReviewButton.onclick = function previousReviewPage () {
         if(reviewPageId -1 +arrayLength >= arrayLength){
-            reviewPageId--;   
+            reviewPageId--;
+            if (pageNumber <= arrayLength & actualPage > 1) {
+                actualPage--; 
+        }   
         } else {
             reviewPageId;  
         } 

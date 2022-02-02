@@ -4,6 +4,7 @@ import { marked } from "marked";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
 import { loadReviews } from "./public/script/apiLoader.js";
+import reviews from "./public/script/loadReviews.js"; 
 
 const app = express();
 
@@ -31,27 +32,35 @@ let cachTimer = 1;
 let review; 
 let reviewArray = []; 
 let catchedMovieId = 0.1; 
+let catchedPageNumber = 0.1; 
+let pageTotal; 
+let j = 0; 
 
-app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
+app.get("/api/movies/:movieId/reviews/:actualPage/:reviewPageId", async (req, res) => {
     let currentTime = new Date().toLocaleString(); 
 
-    if(currentTime >= cachTimer || cachTimer === 1 || catchedMovieId != req.params.movieId){
-        review = await loadReviews(req.params.movieId);
+    if(currentTime >= cachTimer || cachTimer === 1 || catchedMovieId != req.params.movieId || catchedPageNumber != req.params.actualPage){
+        let data = await loadReviews(req.params.movieId, req.params.actualPage);
+        pageTotal = data.meta.pagination.total;
+        review = data.data.map(r => new reviews(r)); 
+
         cachTimer = new Date(new Date().getTime() + 2*60*1000).toLocaleString();
         catchedMovieId = req.params.movieId; 
-        reviewArray = []; 
+        catchedPageNumber = data.meta.pagination.page;
     }
-        let j = 0; 
-        for(let i = 0; 0 < review.length; i+5) {
-                reviewArray[j] = review.splice(0, 5); 
+        
+        for(let i = 0; i < review.length; i+5) {
+                reviewArray[j] = review.splice(0, 5);
                 j++; 
             }
 
        let arrayLength = reviewArray.length; 
+       let reviewIndex = req.params.reviewPageId -1 + catchedPageNumber; 
 
         res.json({
-            data: reviewArray[req.params.reviewPageId],
-            metaArrayData: arrayLength
+            data: reviewArray[reviewIndex],
+            currentArrayLength: arrayLength, 
+            totalArrayLength: pageTotal,
         })
     }); 
 
