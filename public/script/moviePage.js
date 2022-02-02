@@ -14,7 +14,7 @@ async function loadReview () {
     let arrayLength = payload.currentArrayLength;
     lastPage = payload.lastPage; 
 
-    totalArrayLength = Math.ceil(payload.totalArrayLength / 5); 
+    totalArrayLength = payload.totalArrayLength; 
     let pageNumber = reviewPageId + 1; 
     let intervalsVariable = actualPage * 5; 
     console.log(totalArrayLength);
