@@ -21,9 +21,13 @@ let actualPage = 1;
     } else {
         reviewTotal.innerHTML = "There are currently no reviews for the selected movie, so you could be the first one to review it ;)"
     }
+
+    let lastTimeClickedNext = 0;
     
     const nextReviewButton = document.querySelector(".nextReviewButton");
     nextReviewButton.onclick = function nextReviewPage () {
+        if(Date.now() - lastTimeClickedNext < 10000) return;
+        lastTimeClickedNext = Date.now(); 
         if(reviewPageId +1 < totalArrayLength & reviewPageId+1 < intervalsVariable & reviewPageId < totalArrayLength){
             reviewPageId++;  
         } else { 
