@@ -51,7 +51,7 @@ header {
     Author: Marta Anna Todorovic */ }
     header .main-menu a:hover {
       color: #d4af37;
-      box-shadow: 0.7rem 0.5rem 0.5rem #000; }
+      box-shadow: 0px 0px 15px 1px #000; }
     header .main-menu li {
       list-style-type: none; }
 
@@ -73,7 +73,7 @@ header {
   /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
     Author: Marta Anna Todorovic */ }
   #search:hover {
-    box-shadow: 0.7rem 0.5rem 0.5rem #000; }
+    box-shadow: 0px 0px 15px 1px #000; }
 
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
 Author: Mats Hemå */
@@ -110,10 +110,12 @@ Author: Mats Hemå &  Marta Anna Todorovic */
         color: #d4af37; }
 
 .about-us-space {
-  color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   padding: 40px 0px 40px 0px;
-  min-height: calc(100vh - 400px); }
+  min-height: calc(100vh - 400px);
+  background-color: #fff;
+  width: 80vw;
+  margin: auto; }
   .about-us-space .about-us-history {
     margin: auto;
     width: 70%; }
@@ -167,13 +169,18 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 
 .movie-content {
   margin: auto;
-  padding: 0;
-  width: 70%;
-  min-height: calc(100vh - 670px); }
+  padding: 20px;
+  width: 80vw;
+  background-color: #fff;
+  min-height: calc(100vh - 291px); }
   .movie-content .current-title {
-    color: #fff; }
+    font-size: 2rem;
+    color: #000;
+    margin: 0;
+    padding: 20px 0px 20px 20px; }
   .movie-content ul {
-    padding: 0; }
+    padding: 0px 0px 20px 20px;
+    margin: 0; }
   .movie-content .current-movie {
     list-style-type: none;
     padding: 5px 0px; }
@@ -187,22 +194,58 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 
 .movie {
   margin: auto;
-  padding: 0;
-  width: 70%;
+  padding: 20px;
+  background-color: #fff;
+  width: 70vw;
   min-height: calc(100vh - 310px); }
   .movie .movie-title {
-    color: #fff; }
+    color: #000;
+    padding: 20px 0px 0px 20px;
+    margin: 0; }
+  .movie .intro {
+    padding: 0px 20px; }
   .movie .movie-img {
     width: 50%;
     box-shadow: 0px 0px 15px 1px black;
     height: 400px;
     width: auto;
-    margin: 20px 0 20px 0;
+    margin: 20px;
     float: none; }
+  .movie .submit-review {
+    margin-top: 3rem;
+    padding: 20px; }
+    .movie .submit-review .add-review {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 10px 30px;
+      border: 2px solid #fff;
+      border-radius: 6px;
+      box-shadow: 0px 0px 10px;
+      text-align: center;
+      width: 25rem; }
+      .movie .submit-review .add-review .review {
+        margin: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 5px;
+        border-radius: 6px;
+        box-shadow: 0px 0px 10px;
+        box-sizing: border-box; }
+      .movie .submit-review .add-review .review-text {
+        height: 4rem; }
+      .movie .submit-review .add-review .button-review {
+        box-sizing: border-box;
+        width: max-content;
+        margin: 0 auto; }
   .movie .review-container {
     margin-top: 3rem; }
     .movie .review-container .movie-review {
       margin-top: 1rem; }
+
+.movie .screening-container p {
+  margin-left: 20px;
+}
 
 .error-container {
   min-height: calc(100vh - 292px); }
@@ -215,14 +258,20 @@ Author: Mats Hemå &  Marta Anna Todorovic */
     text-decoration: underline; }
 
 .movie-container {
-  min-height: calc(100vh - 291px);
-  width: 70vw;
+  min-height: calc(100vh - 670px);
+  width: 80vw;
+  background-color: #fff;
   margin: auto; }
 
+.current-movie-title {
+  margin: 0;
+  padding: 40px 20px; }
+
 html {
-  height: 100vh; }
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif; }
 
 body {
   margin: 0;
   height: 100%;
-  background-color: #BB0000; }
+  background-color: rgba(211, 211, 211, 0.801); }

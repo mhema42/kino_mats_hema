@@ -1,9 +1,11 @@
 import express from "express";
-import loadRatings from "./public/script/loadRatings.js";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
-import { loadMovie, loadMovies, loadReviews, loadScreenings, loadRating } from "./public/script/apiLoader.js";
-import { getScreenings } from "./public/script/loadScreening.js"; 
+import fetch from "node-fetch";
+
+import loadRatings from "./public/script/loadRatings.js";
+import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
+import api from "./public/script/apiLoader.js";
 
 const app = express();
 
@@ -21,11 +23,9 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/api/screeningtime", async (req, res) => {
-    const screening = await getScreenings();
+    const screening = (await getScreenings(api));
 
-    res.json(
-        screening
-    )
+    res.json(screening)
 }); 
 
 app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
@@ -43,15 +43,22 @@ app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
             data: reviewArray[req.params.reviewPageId],
             metaArrayData: arrayLength
         })
+});
+
+// route for screeningtimes on movie page
+app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
+    const screening = await getScreeningsMovie(req.params.movieId);
+
+    res.json(screening)
 }); 
 
 app.get("/movies", async (req, res) => {
-    const movies = await loadMovies();
+    const movies = await api.loadMovies();
     res.render("movies", { movies });
 });
 
 app.get("/movies/:movieId", async (req, res) => {
-    const movie = await loadMovie(req.params.movieId);
+    const movie = await api.loadMovie(req.params.movieId);
     if (movie) {
         res.render("movie", { movie });
     } else {
@@ -67,6 +74,30 @@ app.get("/api/movies/:movieId/ratings/", async (req, res) => {
     rating: imdb        
     })            
 }); 
+
+app.use(express.json());
+
+app.post("/api/movies/:movieId/reviews", async (req, res) => {
+    const response = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify( {
+      data: {
+        author: req.body.name,
+        comment: req.body.comment,
+        rating: req.body.rating,
+        movie: req.params.movieId,
+      }
+    }) })
+    .then(res => {
+      console.log(req.body);
+      console.log(res);
+      return res.json();  
+    });
+    res.status(201).end();
+});
 
 app.get("/about", async (req, res) => {
     res.render("about");

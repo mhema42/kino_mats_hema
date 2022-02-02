@@ -1,21 +1,22 @@
-@import 'sections/variables';
-@import 'sections/footer';
-@import 'sections/nav';
-@import 'sections/logo';
-@import 'sections/aboutus';
-@import 'sections/hero';
-@import 'sections/importantInfo';
-@import 'sections/movies';
-@import 'sections/movie';
-@import 'sections/404.scss';
-@import 'sections/index.scss';
+@import 'sections/_variables';
+@import 'sections/_footer';
+@import 'sections/_nav';
+@import 'sections/_logo';
+@import 'sections/_aboutus';
+@import 'sections/_hero';
+@import 'sections/_importantInfo';
+@import 'sections/_movies';
+@import 'sections/_movie';
+@import 'sections/_404.scss';
+@import 'sections/_index.scss';
 
 html {
     height: 100vh;
+    font-family: $font-choice;
 }
 
 body {
     margin: 0;
     height: 100%;
-    background-color: $primary-color;
+    background-color: $fifth-color;
 }
