@@ -3,7 +3,6 @@ const url = document.location + '';
 const movieId = url.split('/').filter(e => e).slice(-1);
 let reviewPageId = 0; 
 let actualPage = 1; 
-console.log("hej"); 
 
 (async function loadReview () {
     const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" + actualPage + "/"+ reviewPageId); 
@@ -11,6 +10,7 @@ console.log("hej");
     let arrayLength = payload.currentArrayLength;
     let totalArrayLength = Math.ceil(payload.totalArrayLength / 5); 
     let pageNumber = reviewPageId + 1; 
+    let intervalsVariable = actualPage * 5; 
 
     console.log("actualpage:" + actualPage); 
     console.log("total Array Lengt:" + totalArrayLength); 
@@ -24,11 +24,10 @@ console.log("hej");
     
     const nextReviewButton = document.querySelector(".nextReviewButton");
     nextReviewButton.onclick = function nextReviewPage () {
-        console.log("fire:" + actualPage);
-        if(reviewPageId +1 < arrayLength & reviewPageId +1 < totalArrayLength){
+        if(reviewPageId +1 < totalArrayLength & reviewPageId+1 < intervalsVariable & reviewPageId < totalArrayLength){
             reviewPageId++;  
         } else { 
-            if (pageNumber <= arrayLength & reviewPageId +1 < totalArrayLength) {
+            if (reviewPageId+1 > intervalsVariable -1) {
                 actualPage++; 
                 reviewPageId++;  
             }
@@ -39,12 +38,12 @@ console.log("hej");
 
     const previousReviewButton = document.querySelector(".previousReviewButton");
     previousReviewButton.onclick = function previousReviewPage () {
+        let divider = intervalsVariable = intervalsVariable - 5; 
         if(reviewPageId -1 +arrayLength >= arrayLength){
             reviewPageId--;
-            if (pageNumber <= arrayLength & actualPage > 1) {
+            if (reviewPageId +1 === divider){
                 actualPage--; 
-                reviewPageId--;
-        }   
+        }
         } else {
             reviewPageId;  
         } 

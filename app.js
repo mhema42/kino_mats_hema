@@ -32,7 +32,7 @@ let cachTimer = 1;
 let review; 
 let reviewArray = []; 
 let catchedMovieId = 0.1; 
-let catchedPageNumber;  
+let catchedPageNumber; 
 let pageTotal; 
 let j = 0; 
 let reviewIndex = 1; 
