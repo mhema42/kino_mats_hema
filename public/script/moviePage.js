@@ -6,8 +6,6 @@ let payload;
 let lastPage; 
 let totalArrayLength; 
 
-
-
 async function loadReview () {
     const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" + actualPage + "/"+ reviewPageId); 
     payload = await res.json();
@@ -17,7 +15,6 @@ async function loadReview () {
     totalArrayLength = payload.totalArrayLength; 
     let pageNumber = reviewPageId + 1; 
     let intervalsVariable = actualPage * 5; 
-    console.log(totalArrayLength);
 
     const reviewTotal = document.querySelector(".reviewTotal");
     if(arrayLength >= 1) {
@@ -29,6 +26,7 @@ async function loadReview () {
     let lastTimeClickedNext = 0;
     
     const nextReviewButton = document.querySelector(".nextReviewButton");
+    if( pageNumber === totalArrayLength ) {nextReviewButton.disabled = true, nextReviewButton.classList.add("disabledButton")} else {nextReviewButton.disabled = false, nextReviewButton.classList.remove("disabledButton")}; 
     nextReviewButton.onclick = function nextReviewPage () {
         if(Date.now() - lastTimeClickedNext < 10000) return;
         lastTimeClickedNext = Date.now(); 
@@ -46,6 +44,7 @@ async function loadReview () {
 
 
     const previousReviewButton = document.querySelector(".previousReviewButton");
+    if( pageNumber === 1) {previousReviewButton.disabled = true, previousReviewButton.classList.add("disabledButton")} else {previousReviewButton.disabled = false, previousReviewButton.classList.remove("disabledButton")}
     previousReviewButton.onclick = function previousReviewPage () {
         let divider = intervalsVariable = intervalsVariable - 5; 
         if(reviewPageId -1 +arrayLength >= arrayLength){
