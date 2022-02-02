@@ -2,7 +2,8 @@ import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
 import fetch from "node-fetch";
-
+import { loadReviews } from "./public/script/apiLoader.js";
+import { loadRating } from "./public/script/apiLoader.js";
 import loadRatings from "./public/script/loadRatings.js";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
