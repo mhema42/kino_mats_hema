@@ -41,7 +41,7 @@ app.get("/api/movies/:movieId/reviews/:actualPage/:reviewPageId", async (req, re
     let currentTime = new Date().toLocaleString(); 
 
     if(catchedMovieId != req.params.movieId) {reviewArray.splice(0, reviewArray.length); j = 0;}
-    if(currentTime >= cachTimer || cachTimer === 1 || catchedMovieId != req.params.movieId || catchedPageNumber != req.params.actualPage){
+    if(currentTime >= cachTimer || cachTimer === 1 || catchedMovieId != req.params.movieId || catchedPageNumber < req.params.actualPage){
         let data = await loadReviews(req.params.movieId, req.params.actualPage);
         pageTotal = data.meta.pagination.total;
         review = data.data.map(r => new reviews(r));
