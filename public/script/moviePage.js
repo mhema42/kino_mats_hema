@@ -1,42 +1,62 @@
 const url = document.location + '';
 const movieId = url.split('/').filter(e => e).slice(-1);
 let reviewPageId = 0; 
+let actualPage = 1; 
+let payload; 
+let lastPage; 
+let totalArrayLength; 
 
-async function loadReview() {
-    const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" +reviewPageId); 
-    const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings/"); 
-    const payload = await res.json();
-    const imdbR = await res2.json();    
-    document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + JSON.stringify(imdbR.rating);
-    let arrayLength = payload.metaArrayData; 
+
+
+async function loadReview () {
+    const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" + actualPage + "/"+ reviewPageId); 
+    payload = await res.json();
+    let arrayLength = payload.currentArrayLength;
+    lastPage = payload.lastPage; 
+    totalArrayLength = Math.ceil(payload.totalArrayLength / 5); 
     let pageNumber = reviewPageId + 1; 
+    let intervalsVariable = actualPage * 5; 
 
     const reviewTotal = document.querySelector(".reviewTotal");
     if(arrayLength >= 1) {
-        reviewTotal.innerHTML = "Review page " +pageNumber + "/ " +arrayLength;
+        reviewTotal.innerHTML = "Review page " +pageNumber + "/ " +totalArrayLength;
     } else {
         reviewTotal.innerHTML = "There are currently no reviews for the selected movie, so you could be the first one to review it ;)"
     }
+
+    let lastTimeClickedNext = 0;
     
     const nextReviewButton = document.querySelector(".nextReviewButton");
     nextReviewButton.onclick = function nextReviewPage () {
-        if(reviewPageId +1 < arrayLength){
+        if(Date.now() - lastTimeClickedNext < 10000) return;
+        lastTimeClickedNext = Date.now(); 
+        if(reviewPageId +1 < totalArrayLength & reviewPageId+1 < intervalsVariable & reviewPageId < totalArrayLength){
             reviewPageId++;  
         } else { 
+            if (reviewPageId+1 > intervalsVariable -1) {
+                actualPage++; 
+                reviewPageId++;  
+            }
             reviewPageId;
         } 
         loadReview(); 
     }
 
+
     const previousReviewButton = document.querySelector(".previousReviewButton");
     previousReviewButton.onclick = function previousReviewPage () {
+        let divider = intervalsVariable = intervalsVariable - 5; 
         if(reviewPageId -1 +arrayLength >= arrayLength){
-            reviewPageId--;   
+            reviewPageId--;
+            if (reviewPageId +1 === divider){
+                actualPage--; 
+        }
         } else {
             reviewPageId;  
         } 
         loadReview(); 
     }
+
   
     document.querySelector(".movie-review").innerHTML = ""; 
 
@@ -53,11 +73,11 @@ async function loadReview() {
             if(author) {li.append(author)}; 
             if(rating) {li.append(rating)}; 
             if(comment) {li.append(comment)}; 
-            document.querySelector(".movie-review").prepend(li);
+            document.querySelector(".movie-review").append(li);
         });    
     }     
-  };
-  loadReview();
+  }; 
+  loadReview(); 
 
 // fetch to local API for screening times for individual movies
 (async () => {
@@ -78,6 +98,13 @@ async function loadReview() {
         document.querySelector(".screenings-for-each-movie").append(li); 
     }); 
 })();
+
+(async () => {
+    const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings/"); 
+    const imdbR = await res2.json();    
+    document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + JSON.stringify(imdbR.rating);
+})();
+
 
 document.querySelector("#addBtn").onclick = async (ev) => {
     ev.preventDefault();
@@ -103,6 +130,4 @@ document.querySelector("#addBtn").onclick = async (ev) => {
     document.querySelector("#rate").selectedIndex = 0;  
     document.querySelector("#addComment").value = "";
     document.querySelector("#addName").value = "";
-
-    loadReview();
 };

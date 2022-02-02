@@ -2,11 +2,13 @@ import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
 import fetch from "node-fetch";
+
 import { loadReviews } from "./public/script/apiLoader.js";
 import { loadRating } from "./public/script/apiLoader.js";
 import loadRatings from "./public/script/loadRatings.js";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
+import reviews from "./public/script/loadReviews.js";
 
 const app = express();
 
@@ -29,22 +31,50 @@ app.get("/api/screeningtime", async (req, res) => {
     res.json(screening)
 }); 
 
-app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
-    const review = await loadReviews(req.params.movieId);
-    let j = 0; 
-    const reviewArray = []; 
+//used for the caching function for the review page
+let cachTimer = 1; 
+let review; 
+let reviewArray = []; 
+let catchedMovieId = 0.1; 
+let catchedPageNumber; 
+let pageTotal; 
+let lastPage; 
+let j = 0; 
+let reviewIndex = 1; 
 
-    for(let i = 0; 0 < review.length; i+5) {
-            reviewArray[j] = review.splice(0, 5); 
-            j++; 
-        }
-        let arrayLength = reviewArray.length; 
+app.get("/api/movies/:movieId/reviews/:actualPage/:reviewPageId", async (req, res) => {
+    let currentTime = new Date().toLocaleString(); 
+
+    if(catchedMovieId != req.params.movieId) {reviewArray.splice(0, reviewArray.length); j = 0;}
+    if(currentTime >= cachTimer || cachTimer === 1 || catchedMovieId != req.params.movieId || catchedPageNumber < req.params.actualPage){
+        let data = await loadReviews(req.params.movieId, req.params.actualPage);
+        pageTotal = data.meta.pagination.total;
+        lastPage = data.meta.pagination.pageCount;
+        review = data.data.map(r => new reviews(r));
+        
+        cachTimer = new Date(new Date().getTime() + 2*60*1000).toLocaleString(); 
+        catchedMovieId = req.params.movieId; 
+        catchedPageNumber = data.meta.pagination.page;
+    }
+        for(let i = 0; i < review.length; i+5) {
+                reviewArray[j] = review.splice(0, 5);
+                j++; 
+            }
+
+       let arrayLength = reviewArray.length; 
+       let remove = parseInt(catchedPageNumber); 
+
+       if(catchedPageNumber > 1) {reviewIndex = parseInt(req.params.reviewPageId) + parseInt(catchedPageNumber) -remove}
+       else {reviewIndex = req.params.reviewPageId};
 
         res.json({
-            data: reviewArray[req.params.reviewPageId],
-            metaArrayData: arrayLength
+            data: reviewArray[reviewIndex],
+            currentArrayLength: arrayLength, 
+            totalArrayLength: pageTotal,
+            lastPage: lastPage,
         })
-});
+    }); 
+
 
 // route for screeningtimes on movie page
 app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
