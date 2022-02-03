@@ -1,6 +1,5 @@
 const url = document.location + '';
 const movieId = url.split('/').filter(e => e).slice(-1);
-
 let reviewPageId = 0; 
 let actualPage = 1; 
 let payload; 
@@ -39,8 +38,8 @@ async function loadReview () {
                 reviewPageId++;  
             }
             reviewPageId;
-        }
-        loadReview();
+        } 
+        loadReview(); 
     }
 
 
@@ -52,23 +51,24 @@ async function loadReview () {
             reviewPageId--;
             if (reviewPageId +1 === divider){
                 actualPage--; 
-        } else {
-            reviewPageId;
         }
-        loadReview();
+        } else {
+            reviewPageId;  
+        } 
+        loadReview(); 
     }
 
-    document.querySelector(".movie-review").innerHTML = "";
+  
+    document.querySelector(".movie-review").innerHTML = ""; 
 
-    if (arrayLength >= 1) {
+    if(arrayLength >= 1) {
         payload.data.forEach(review => {
             const li = document.createElement("li");
             const author = document.createElement("span");
-            author.innerText = review.author + " ";
+            author.innerText = review.author + " "; 
             const rating = document.createElement("a");
-            rating.innerText = "Rating: " + review.rating + " ";
+            rating.innerText = "Rating: " + review.rating + " "; 
             const comment = document.createElement("a");
-
             comment.innerText = "Comment: " + review.comment; 
             
             if(author) {li.append(author)}; 
@@ -83,21 +83,21 @@ async function loadReview () {
 // fetch to local API for screening times for individual movies
 (async () => {
     const res = await fetch("http://localhost:5080/api/movies/" + movieId + "/screeningtime");
-    const data = await res.json();
+    const data = await res.json(); 
 
     data.data.forEach(showtime => {
         const li = document.createElement("li");
         const movieShowTime = document.createElement("span");
-        movieShowTime.innerText = [showtime.time.replace(/T(\T*)/, ", ") + ", " + showtime.room + ", "];
+        movieShowTime.innerText = [ showtime.time.replace(/T(\T*)/, ", ") + ", " + showtime.room + ", " ];
         const movieTitle = document.createElement("a");
-        movieTitle.innerText = showtime.title;
+        movieTitle.innerText = showtime.title; 
         movieTitle.href = `/movies/${showtime.id}`;
 
         li.append(movieShowTime);
-        li.append(movieTitle);
-
-        document.querySelector(".screenings-for-each-movie").append(li);
-    });
+        li.append(movieTitle); 
+     
+        document.querySelector(".screenings-for-each-movie").append(li); 
+    }); 
 })();
 
 (async () => {
@@ -112,24 +112,23 @@ document.querySelector("#addBtn").onclick = async (ev) => {
     const rating = document.querySelector("#rate").value;
     const comment = document.querySelector("#addComment").value;
     const author = document.querySelector("#addName").value;
-
-    await fetch(`/api/movies/${movieId}/reviews`, {
-      
+    
+    await fetch(`/api/movies/${movieId}/reviews`, { 
         method: "POST",
         mode: "cors",
         credentials: "same-origin",
         headers: {
-            "Content-Type": "application/json",
+             "Content-Type": "application/json",
         },
         body: JSON.stringify({
             movieId: movieId,
             comment: comment,
             rating: rating,
             name: author
-        })
+        }) 
     });
-
-    document.querySelector("#rate").selectedIndex = 0;
+    
+    document.querySelector("#rate").selectedIndex = 0;  
     document.querySelector("#addComment").value = "";
     document.querySelector("#addName").value = "";
 
