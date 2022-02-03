@@ -9,14 +9,6 @@ async function loadReview() {
     let arrayLength = payload.metaArrayData;
     let pageNumber = reviewPageId + 1;
 
-    if (payload.data < 5) {
-        const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings/");
-        const imdbR = await res2.json();
-        document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + JSON.stringify(imdbR.rating);
-    } else {
-        document.querySelector(".movie-rating").innerHTML = ""
-    }
-
     const reviewTotal = document.querySelector(".reviewTotal");
     if (arrayLength >= 1) {
         reviewTotal.innerHTML = "Review page " + pageNumber + "/ " + arrayLength;
@@ -83,6 +75,25 @@ loadReview();
 
         document.querySelector(".screenings-for-each-movie").append(li);
     });
+})();
+
+// add average rating / imdb rating
+(async () => {
+    const response = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings");
+    const payload = await response.json();
+    let i = 0;
+    let sum = 0;
+
+    if (payload.length >= 5) {
+        for (i = 0; i < payload.length; i++) {
+            sum += payload[i].attributes.rating;
+            document.querySelector(".movie-rating").innerHTML = "Rating: " + JSON.stringify(Math.round(sum / payload.length) + "/5");
+        }
+    } else {
+        const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/rating/");
+        const imdbR = await res2.json();
+        document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + JSON.stringify(imdbR.rating);
+    }
 })();
 
 document.querySelector("#addBtn").onclick = async (ev) => {
