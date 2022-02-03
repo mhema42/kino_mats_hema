@@ -1,4 +1,4 @@
-import { loadScreeningsMovie } from "./apiLoader.js";
+// import { loadScreeningsMovie } from "./apiLoader.js";
 
 export async function getScreenings(api) {
   const now = new Date();
@@ -8,7 +8,7 @@ export async function getScreenings(api) {
     .filter(obj => {
     //const screeningTime = new Date(obj.time);
       const screeningTime = new Date(obj.attributes.start_time);
-      return screeningTime > now // && screeningTime < result;
+      return screeningTime > now // && screeningTime < result; 
     })
     .slice(0, 10);
  
@@ -27,9 +27,9 @@ export async function getScreenings(api) {
 }
 
 // filter list with all screeningtimes to only show upcoming screeningtimes for the chosen movie
-export async function getScreeningsMovie(movieId) {
+export async function getScreeningsMovie(api, movieId) {
   const now = new Date();
-  const screen = (await loadScreeningsMovie(movieId))
+  const screen = (await api.loadScreeningsMovie(movieId))
     .filter(obj => {
       const screeningTime = new Date(obj.attributes.start_time);
       return screeningTime > now;

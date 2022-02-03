@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app.js';
+import app from '../index-app.js';
 
 test('movie page shows list of movies', async () => {
   const response = await request(app)

@@ -65,13 +65,9 @@ let reviewPageId = 0;
     data.data.forEach(showtime => {
         const li = document.createElement("li");
         const movieShowTime = document.createElement("span");
-        movieShowTime.innerText = [ showtime.time.replace(/T(\T*)/, ", ") + ", " + showtime.room + ", " ];
-        const movieTitle = document.createElement("a");
-        movieTitle.innerText = showtime.title; 
-        movieTitle.href = `/movies/${showtime.id}`;
+        movieShowTime.innerText = [ showtime.time.replace(/T/, " kl ").replace(/:00.000Z/, " i ") + showtime.room + showtime.title ];
 
         li.append(movieShowTime);
-        li.append(movieTitle); 
      
         document.querySelector(".screenings-for-each-movie").append(li); 
     }); 
