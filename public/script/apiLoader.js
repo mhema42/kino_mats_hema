@@ -27,10 +27,10 @@ export async function loadScreeningsMovie(movieId) {
   return payload.data;
 }
 
-export async function loadReviews(movieId) {
-  const res = await fetch(API_BASE + "/reviews?filters[movie]=" + movieId);
-  const payload = await res.json();
-  return payload.data.map(r => new reviews(r)); 
+export async function loadReviews(movieId, pageCount) {
+  const res = await fetch(API_BASE + "/reviews?pagination[page]=" + pageCount + "&filters[movie]="+ movieId);
+  let payload = await res.json();
+  return payload; 
 }
 
 export async function loadRating(movieId) {
