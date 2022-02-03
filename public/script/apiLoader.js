@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import reviews from "./loadReviews.js"; 
 
 const API_BASE = 'https://lernia-kino-cms.herokuapp.com/api';
 
@@ -16,13 +15,13 @@ export async function loadMovie(id) {
 }
 
 export async function loadScreenings() {
-  const res = await fetch(API_BASE + '/screenings?populate=movie&pagination%5Blimit%5D=100');
+  const res = await fetch(API_BASE + '/screenings?populate=movie&pagination[pageSize]=100&sort=start_time');
   const payload = await res.json();
   return payload.data;
 }
 
 export async function loadScreeningsMovie(movieId) {
-  const res = await fetch(API_BASE + "/screenings?populate=movie&filters[movie]=" + movieId);
+  const res = await fetch(API_BASE + "/screenings?populate=movie&filters[movie]=" + movieId +"&sort=start_time");
   const payload = await res.json();
   return payload.data;
 }

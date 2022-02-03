@@ -1,14 +1,13 @@
 import { loadScreeningsMovie } from "./apiLoader.js";
 
 export async function getScreenings(api) {
-  const now = new Date();
-  //const now2 = new Date();
-  //const result = getDate(now2.setDate(now2.getDate() + 6));
+  const now = new Date().toLocaleString();
+
   const screen = (await api.loadScreenings())
     .filter(obj => {
-    //const screeningTime = new Date(obj.time);
-      const screeningTime = new Date(obj.attributes.start_time);
-      return screeningTime > now // && screeningTime < result;
+    let screeningTime = new Date(obj.attributes.start_time).toLocaleString(); 
+    let fiveDaysLater = new Date(new Date().getTime() + 5*24*60*60*1000).toLocaleString(); 
+    return screeningTime > now & screeningTime < fiveDaysLater;
     })
     .slice(0, 10);
  
