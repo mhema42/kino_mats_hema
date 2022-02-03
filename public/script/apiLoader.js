@@ -48,5 +48,7 @@ export default {
   loadMovies: loadMovies,
   loadMovie: loadMovie,
   loadScreenings: loadScreenings,
-  loadScreeningsMovie: loadScreeningsMovie
+  loadScreeningsMovie: loadScreeningsMovie,
+  loadRating: loadRating,
+  loadAllRatings: loadAllRatings
 };

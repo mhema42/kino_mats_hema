@@ -99,7 +99,7 @@ app.get("/movies/:movieId", async (req, res) => {
 
 app.get("/api/movies/:movieId/ratings", async (req, res) => {
     const data = await loadAllRatings(req.params.movieId);  
-
+    console.log(data.length)
     res.json(data) 
 });
 
