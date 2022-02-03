@@ -1,18 +1,10 @@
 const url = document.location + '';
 const movieId = url.split('/').filter(e => e).slice(-1);
-let reviewPageId = 0;
-
-async function loadReview() {
-    const res = await fetch("http://localhost:5080/api/movies/" + movieId + "/reviews/" + reviewPageId);
-    const payload = await res.json();
-
-    let arrayLength = payload.metaArrayData;
-    let pageNumber = reviewPageId + 1;
-    let reviewPageId = 0; 
-    let actualPage = 1; 
-    let payload; 
-    let lastPage; 
-    let totalArrayLength; 
+let reviewPageId = 0; 
+let actualPage = 1; 
+let payload; 
+let lastPage; 
+let totalArrayLength; 
 
 async function loadReview () {
     const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" + actualPage + "/"+ reviewPageId); 
