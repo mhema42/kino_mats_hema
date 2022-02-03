@@ -8,6 +8,7 @@ import { loadRating } from "./public/script/apiLoader.js";
 import loadRatings from "./public/script/loadRatings.js";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
+import { loadAllRatings } from "./public/script/apiLoader.js";
 import reviews from "./public/script/loadReviews.js";
 
 const app = express();
@@ -96,10 +97,16 @@ app.get("/movies/:movieId", async (req, res) => {
     }
 });
 
-app.get("/api/movies/:movieId/ratings/", async (req, res) => {
+app.get("/api/movies/:movieId/ratings", async (req, res) => {
+    const data = await loadAllRatings(req.params.movieId);  
+
+    res.json(data) 
+});
+
+app.get("/api/movies/:movieId/rating", async (req, res) => {
     const data = await loadRating(req.params.movieId);       
     const id = data.attributes.imdbId;  
-    const imdb = await loadRatings(id);    
+    const imdb = await loadRatings(id);
     res.json({
     rating: imdb        
     })            
