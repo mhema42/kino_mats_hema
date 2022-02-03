@@ -38,6 +38,12 @@ export async function loadRating(movieId) {
   return payload.data;
 }
 
+export async function loadAllRatings(movieId) {
+  const res = await fetch(API_BASE + "/reviews?pagination[pageSize]=100&filters[movie]=" + movieId);
+  const payload = await res.json();
+  return payload.data;
+}
+
 export default {
   loadMovies: loadMovies,
   loadMovie: loadMovie,
