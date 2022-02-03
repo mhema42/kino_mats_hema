@@ -1,17 +1,21 @@
 import { getScreeningsMovie } from "../../public/script/loadScreening.js";
+import api from "../../public/script/apiLoader.js";
 
 const now = new Date;
 const showRoom = "Stora salongen";
 let movieId = 1;
 
 test("Recieved data contains date&time which exceeds current date", async () => {
-    const payload = await getScreeningsMovie(movieId);
+    const payload = await getScreeningsMovie(api, movieId);
 
-    expect(payload.data[0].time < now);
+    payload.data.forEach(screening => {
+        const screeningTime = new Date(screening.time);
+        expect(screeningTime > now).toBeTruthy();
+    });
 });
 
 test("Recieved data contains data and contains correct showroom", async () => {
-    const payload = await getScreeningsMovie(movieId);
+    const payload = await getScreeningsMovie(api, movieId);
 
     expect(payload.data.length).toBeGreaterThan(0);   
     expect(payload.data[0].time).toBeTruthy();
@@ -29,7 +33,7 @@ test("Recieved data contains correct title", async () => {
     ];
 
     for (;movieId < movieTitel.length;) {
-        const payload = await getScreeningsMovie(movieId)
+        const payload = await getScreeningsMovie(api, movieId)
         expect(payload.data[0].title).toBe(movieTitel[movieId - 1])
         movieId ++
     };

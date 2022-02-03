@@ -24,7 +24,6 @@ export async function loadScreenings() {
 export async function loadScreeningsMovie(movieId) {
   const res = await fetch(API_BASE + "/screenings?populate=movie&pagination[pageSize]=100&filters[movie]=" + movieId);
   const payload = await res.json();
-  console.log(movieId)
   return payload.data;
 }
 //&filters[movie]=" + movieId

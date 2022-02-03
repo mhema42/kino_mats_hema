@@ -296,7 +296,7 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   padding: 20px;
   width: 80vw;
   background-color: #fff;
-  min-height: calc(100vh - 670px);
+  min-height: calc(100vh - 291px);
 }
 
 .movie-content .current-title {
@@ -364,10 +364,6 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   margin-top: 1rem;
 }
 
-.movie .screening-container p {
-  margin-left: 20px;
-}
-
 .error-container {
   min-height: calc(100vh - 292px);
 }
@@ -382,7 +378,7 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 }
 
 .movie-container {
-  min-height: calc(100vh - 291px);
+  min-height: calc(100vh - 670px);
   width: 80vw;
   background-color: #fff;
   margin: auto;
