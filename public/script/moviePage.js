@@ -112,7 +112,7 @@ document.querySelector("#addBtn").onclick = async (ev) => {
     const rating = document.querySelector("#rate").value;
     const comment = document.querySelector("#addComment").value;
     const author = document.querySelector("#addName").value;
-
+    
     await fetch(`/api/movies/${movieId}/reviews`, { 
         method: "POST",
         mode: "cors",
@@ -127,13 +127,10 @@ document.querySelector("#addBtn").onclick = async (ev) => {
             name: author
         }) 
     });
-
+    
     document.querySelector("#rate").selectedIndex = 0;  
     document.querySelector("#addComment").value = "";
     document.querySelector("#addName").value = "";
 
-    
-    actualPage = lastPage; 
-    reviewPageId = totalArrayLength  -1; 
     loadReview(); 
 };
