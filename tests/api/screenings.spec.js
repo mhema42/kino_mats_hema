@@ -1,5 +1,5 @@
 import { jest } from "@jest/globals";
-import { getScreenings } from "../../public/script/loadScreening.js";
+import { getScreenings } from "../../src/script/loadScreening.js";
 import moment from "moment";
 
 beforeEach(() => {

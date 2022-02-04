@@ -1,5 +1,5 @@
-import { loadAllRatings } from "../../public/script/apiLoader.js";
-import getRatings from "../../public/script/getRatings.js";
+import { loadAllRatings } from "../../src/script/apiLoader.js";
+import getRatings from "../../src/script/getRatings.js";
 
 const api = { async loadAllRatings() {
   return [

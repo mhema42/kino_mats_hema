@@ -1,4 +1,4 @@
-import { getScreeningsMovie } from "../../public/script/loadScreening.js";
+import { getScreeningsMovie } from "../../src/script/loadScreening.js";
 
 // mocked data from - https://lernia-kino-cms.herokuapp.com/api/screenings?populate=movie&pagination[pageSize]=100&filters[movie]=2
 const api = {

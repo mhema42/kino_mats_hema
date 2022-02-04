@@ -2,11 +2,11 @@ import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
 import fetch from "node-fetch";
-import getRatings from "./public/script/getRatings.js";
-import { loadReviews } from "./public/script/apiLoader.js";
-import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js";
-import api from "./public/script/apiLoader.js";
-import reviews from "./public/script/loadReviews.js";
+import getRatings from "./src/script/getRatings.js";
+import { loadReviews } from "./src/script/apiLoader.js";
+import { getScreenings, getScreeningsMovie } from "./src/script/loadScreening.js";
+import api from "./src/script/apiLoader.js";
+import reviews from "./src/script/loadReviews.js";
 
 const app = express();
 

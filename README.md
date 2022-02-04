@@ -9,30 +9,32 @@ Screenings on startpage
 Screenings on Moviepage
     •	/api/movies/:movieId/screeningtime
     •	Method = GET
-        :movieId - för filtrering på filmtitlar
+        :movieId - identifier for which movie to filter
 
 Reviews on Moviepage
-    •	/api/movies/:movieId/reviews/:actualPage/:reviewPageId
+
+    •	/api/movies/:movieId/reviews/:reviewPageId
     •	Method = GET
+        :movieId - identifier for which movie to filter
+        :reviewPageId - identifier for review page with 5 reviews
 
     •	/api/movies/:movieId/reviews
     •	Method = POST
+        :movieId - identifier for which movie to filter
 
-Body: 	
-    data: {
-            author: req.body.name,
-            comment: req.body.comment,
-            rating: req.body.rating,
-            movie: req.params.movieId,
-        }
+        Body: 	
+            data: {
+                    author: req.body.name,
+                    comment: req.body.comment,
+                    rating: req.body.rating,
+                    movie: req.params.movieId,
+                }
 
-Ratings on Moviepage
-    (Imdb ratings)
-    •	/api/movies/:movieId/rating
-    •	Method = GET
-    (average ratings)
+Ratings on Moviepage 
+    User rating for more than 5 reviews or imdb rating for less than 5
     •	/api/movies/:movieId/ratings
     •	Method = GET
+        :movieId - identifier for which movie to filter
 
 <---------------------------------------------------------------------------------------------------->
 

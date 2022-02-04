@@ -1,5 +1,5 @@
-import { getScreeningsMovie } from "../../public/script/loadScreening.js";
-import api from "../../public/script/apiLoader.js";
+import { getScreeningsMovie } from "../../src/script/loadScreening.js";
+import api from "../../src/script/apiLoader.js";
 
 const now = new Date;
 const showRoom = "Stora salongen";
