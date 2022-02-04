@@ -1,59 +1,24 @@
-const url = document.location + "";
-const movieId = url
-  .split("/")
-  .filter((e) => e)
-  .slice(-1);
-let reviewPageId = 0;
-let actualPage = 1;
-let payload;
-let lastPage;
-let totalArrayLength;
+const url = document.location + '';
+const movieId = url.split('/').filter(e => e).slice(-1);
+let reviewPageId = 0; 
+let actualPage = 1; 
+let payload; 
+let lastPage; 
+let totalArrayLength; 
 
-export default async function loadReview() {
-  const res = await fetch(
-    "http://localhost:5080/api/movies/" +
-      movieId +
-      "/reviews/" +
-      actualPage +
-      "/" +
-      reviewPageId
-  );
-  payload = await res.json();
-  let arrayLength = payload.currentArrayLength;
-  lastPage = payload.lastPage;
+async function loadReview () {
+    const res = await fetch("http://localhost:5080/api/movies/"+ movieId + "/reviews/" + actualPage + "/"+ reviewPageId); 
+    payload = await res.json();
+    let arrayLength = payload.currentArrayLength;
+    lastPage = payload.lastPage; 
 
-  totalArrayLength = payload.totalArrayLength;
-  let pageNumber = reviewPageId + 1;
-  let intervalsVariable = actualPage * 5;
+    totalArrayLength = payload.totalArrayLength; 
+    let pageNumber = reviewPageId + 1; 
+    let intervalsVariable = actualPage * 5; 
 
-  const reviewTotal = document.querySelector(".reviewTotal");
-  if (arrayLength >= 1) {
-    reviewTotal.innerHTML =
-      "Review page " + pageNumber + "/ " + totalArrayLength;
-  } else {
-    reviewTotal.innerHTML =
-      "There are currently no reviews for the selected movie, so you could be the first one to review it ;)";
-  }
-
-  let lastTimeClickedNext = 0;
-
-  const nextReviewButton = document.querySelector(".nextReviewButton");
-  if (pageNumber === totalArrayLength) {
-    (nextReviewButton.disabled = true),
-      nextReviewButton.classList.add("disabledButton");
-  } else {
-    (nextReviewButton.disabled = false),
-      nextReviewButton.classList.remove("disabledButton");
-  }
-  nextReviewButton.onclick = function nextReviewPage() {
-    if (Date.now() - lastTimeClickedNext < 10000) return;
-    lastTimeClickedNext = Date.now();
-    if (
-      (reviewPageId + 1 < totalArrayLength) &
-      (reviewPageId + 1 < intervalsVariable) &
-      (reviewPageId < totalArrayLength)
-    ) {
-      reviewPageId++;
+    const reviewTotal = document.querySelector(".reviewTotal");
+    if(arrayLength >= 1) {
+        reviewTotal.innerHTML = "Review page " +pageNumber + "/ " +totalArrayLength;
     } else {
       if (reviewPageId + 1 > intervalsVariable - 1) {
         actualPage++;
@@ -109,31 +74,23 @@ export default async function loadReview() {
       document.querySelector(".movie-review").append(li);
     });
   }
-}
+
 loadReview();
 
 // fetch to local API for screening times for individual movies
 (async () => {
-  const res = await fetch(
-    "http://localhost:5080/api/movies/" + movieId + "/screeningtime"
-  );
-  const data = await res.json();
+    const res = await fetch("http://localhost:5080/api/movies/" + movieId + "/screeningtime");
+    const data = await res.json(); 
 
-  data.data.forEach((showtime) => {
-    const li = document.createElement("li");
-    const movieShowTime = document.createElement("span");
-    movieShowTime.innerText = [
-      showtime.time.replace(/T(\T*)/, ", ") + ", " + showtime.room + ", ",
-    ];
-    const movieTitle = document.createElement("a");
-    movieTitle.innerText = showtime.title;
-    movieTitle.href = `/movies/${showtime.id}`;
+    data.data.forEach(showtime => {
+        const li = document.createElement("li");
+        const movieShowTime = document.createElement("span");
+        movieShowTime.innerText = [ showtime.time.replace(/T/, " kl ").replace(/:00.000Z/, " i ") + showtime.room + showtime.title ];
 
-    li.append(movieShowTime);
-    li.append(movieTitle);
-
-    document.querySelector(".screenings-for-each-movie").append(li);
-  });
+        li.append(movieShowTime);
+     
+        document.querySelector(".screenings-for-each-movie").append(li); 
+    }); 
 })();
 
 (async () => {

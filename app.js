@@ -94,10 +94,10 @@ app.get(
 
 // route for screeningtimes on movie page
 app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
-  const screening = await getScreeningsMovie(req.params.movieId);
-
-  res.json(screening);
-});
+    const screening = await getScreeningsMovie(api, req.params.movieId);
+    
+    res.json(screening)
+}); 
 
 app.get("/movies", async (req, res) => {
   const movies = await api.loadMovies();
