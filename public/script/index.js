@@ -4,7 +4,7 @@
     
     payload.data.forEach(showtime => {
         const movieShowTime = document.createElement("span");
-        movieShowTime.innerText = [ showtime.time.replace(/T(\T*)/, ", ") + ", " + showtime.room + ", " ]; 
+        movieShowTime.innerText = [ showtime.time.replace(/T/, " kl ").replace(/:00.000Z/, " i ") + showtime.room + ", " ]; 
         const movieTitle = document.createElement("a");
         movieTitle.innerText = showtime.movie.title; 
         movieTitle.href = `/movies/${showtime.movie.id}`;
