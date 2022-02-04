@@ -43,61 +43,25 @@ let lastPage;
 let j = 0;
 let reviewIndex = 1;
 
-app.get(
-  "/api/movies/:movieId/reviews/:actualPage/:reviewPageId",
-  async (req, res) => {
-    let currentTime = new Date().toLocaleString();
-    if (cachedMovieId != req.params.movieId) {
-      reviewArray.splice(0, reviewArray.length);
-      j = 0;
-    }
-    if (
-      currentTime >= cachTimer ||
-      cachedMovieId != req.params.movieId ||
-      cachedPageNumber < req.params.actualPage ||
-      Number(pageTotal) - 1 === Number(req.params.reviewPageId)
-    ) {
-      let data = await loadReviews(req.params.movieId, req.params.actualPage);
-      pageTotal = Math.ceil(data.meta.pagination.total / 5);
-      lastPage = data.meta.pagination.pageCount;
-      review = data.data.map((r) => new reviews(r));
+app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
+  let data = await loadReviews(req.params.movieId, req.params.reviewPageId);
+  let lastPage = data.meta.pagination.pageCount;
+  let review = data.data.map(r => new reviews(r));
+  let reviewLength = review.length;
 
-      cachTimer = new Date(
-        new Date().getTime() + 2 * 60 * 1000
-      ).toLocaleString();
-      cachedMovieId = req.params.movieId;
-      cachedPageNumber = data.meta.pagination.page;
-    }
-    for (let i = 0; i < review.length; i + 5) {
-      reviewArray[j] = review.splice(0, 5);
-      j++;
-    }
-
-    let arrayLength = reviewArray.length;
-    let remove = parseInt(cachedPageNumber);
-
-    if (cachedPageNumber > 1) {
-      reviewIndex =
-        parseInt(req.params.reviewPageId) + parseInt(cachedPageNumber) - remove;
-    } else {
-      reviewIndex = req.params.reviewPageId;
-    }
-
-    res.json({
-      data: reviewArray[reviewIndex],
-      currentArrayLength: arrayLength,
-      totalArrayLength: pageTotal,
-      lastPage: lastPage,
-    });
-  }
-);
+  res.json({
+    data: review,
+    metaLastPage: lastPage,
+    metaLength: reviewLength
+  })
+});
 
 // route for screeningtimes on movie page
 app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
-    const screening = await getScreeningsMovie(api, req.params.movieId);
-    
-    res.json(screening)
-}); 
+  const screening = await getScreeningsMovie(api, req.params.movieId);
+
+  res.json(screening)
+});
 
 app.get("/movies", async (req, res) => {
   const movies = await api.loadMovies();
