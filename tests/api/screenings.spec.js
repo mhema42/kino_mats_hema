@@ -1,5 +1,6 @@
 import { jest } from "@jest/globals";
 import { getScreenings } from "../../public/script/loadScreening.js";
+import moment from "moment";
 
 beforeEach(() => {
     jest.useFakeTimers();
@@ -665,4 +666,10 @@ test("Received screening time is in future", async () => {
         const screeningDate = new Date(screen.time);
         expect(screeningDate > today).toBeTruthy();
     });
+});
+
+test("Does not show screenings more than 5 days ahead", async () => {
+    const payload = await getScreenings(api);
+    const fiveDaysLater = moment().add(5, 'days').calendar(); 
+    expect(payload.data[0].time < fiveDaysLater).toBeTruthy();
 });
