@@ -140,8 +140,8 @@ loadReview();
   const res2 = await fetch(
     "http://localhost:5080/api/movies/" + movieId + "/ratings/"
   );
-  const rating = await res2.json();
-  document.querySelector(".movie-rating").innerHTML = rating.metaMsg + " " + JSON.stringify(rating.data);
+  const rate = await res2.json();
+  document.querySelector(".movie-rating").innerHTML = rate.metaMsg + " " + JSON.stringify(rate.rating);
 })();
 
 

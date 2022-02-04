@@ -2,158 +2,163 @@ import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
 import fetch from "node-fetch";
-import  getRatings  from "./public/script/getRatings.js"
+import getRatings from "./public/script/getRatings.js";
 import { loadReviews } from "./public/script/apiLoader.js";
-//import { loadRating } from "./public/script/apiLoader.js";
-//import loadRatings from "./public/script/loadRatings.js";
-import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
+import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js";
 import api from "./public/script/apiLoader.js";
-//import { loadAllRatings } from "./public/script/apiLoader.js";
 import reviews from "./public/script/loadReviews.js";
 
 const app = express();
 
 app.set("view engine", "handlebars");
 app.set("views", "./views");
-app.engine('handlebars', engine({
-    defaultLayout: 'index',
+app.engine(
+  "handlebars",
+  engine({
+    defaultLayout: "index",
     helpers: {
-        markdown: md => marked(md)
+      markdown: (md) => marked(md),
     },
-}));
+  })
+);
 
 app.get("/", async (req, res) => {
-    res.render("main");
+  res.render("main");
 });
 
 app.get("/api/screeningtime", async (req, res) => {
-    const screening = (await getScreenings(api));
+  const screening = await getScreenings(api);
 
-    res.json(screening)
-}); 
+  res.json(screening);
+});
 
 //used for the caching function for the review page
-let cachTimer = 1; 
-let review; 
-let reviewArray = []; 
-let cachedMovieId = 0.1; 
-let cachedPageNumber;  
-let pageTotal = 0; 
-let lastPage; 
-let j = 0; 
-let reviewIndex = 1; 
+let cachTimer = 1;
+let review;
+let reviewArray = [];
+let cachedMovieId = 0.1;
+let cachedPageNumber;
+let pageTotal = 0;
+let lastPage;
+let j = 0;
+let reviewIndex = 1;
 
-app.get("/api/movies/:movieId/reviews/:actualPage/:reviewPageId", async (req, res) => {
-    let currentTime = new Date().toLocaleString(); 
-    if(cachedMovieId != req.params.movieId) {reviewArray.splice(0, reviewArray.length); j = 0;}
-    if(currentTime >= cachTimer || cachedMovieId != req.params.movieId || cachedPageNumber < req.params.actualPage || Number(pageTotal) -1 === Number(req.params.reviewPageId)){
-        let data = await loadReviews(req.params.movieId, req.params.actualPage);
-        pageTotal = Math.ceil(data.meta.pagination.total / 5)
-        lastPage = data.meta.pagination.pageCount;
-        review = data.data.map(r => new reviews(r));
-        
-        cachTimer = new Date(new Date().getTime() + 2*60*1000).toLocaleString(); 
-        cachedMovieId = req.params.movieId; 
-        cachedPageNumber = data.meta.pagination.page;
+app.get(
+  "/api/movies/:movieId/reviews/:actualPage/:reviewPageId",
+  async (req, res) => {
+    let currentTime = new Date().toLocaleString();
+    if (cachedMovieId != req.params.movieId) {
+      reviewArray.splice(0, reviewArray.length);
+      j = 0;
     }
-        for(let i = 0; i < review.length; i+5) {
-                reviewArray[j] = review.splice(0, 5);
-                j++; 
-            }
+    if (
+      currentTime >= cachTimer ||
+      cachedMovieId != req.params.movieId ||
+      cachedPageNumber < req.params.actualPage ||
+      Number(pageTotal) - 1 === Number(req.params.reviewPageId)
+    ) {
+      let data = await loadReviews(req.params.movieId, req.params.actualPage);
+      pageTotal = Math.ceil(data.meta.pagination.total / 5);
+      lastPage = data.meta.pagination.pageCount;
+      review = data.data.map((r) => new reviews(r));
 
-       let arrayLength = reviewArray.length; 
-       let remove = parseInt(cachedPageNumber); 
+      cachTimer = new Date(
+        new Date().getTime() + 2 * 60 * 1000
+      ).toLocaleString();
+      cachedMovieId = req.params.movieId;
+      cachedPageNumber = data.meta.pagination.page;
+    }
+    for (let i = 0; i < review.length; i + 5) {
+      reviewArray[j] = review.splice(0, 5);
+      j++;
+    }
 
-       if(cachedPageNumber > 1) {reviewIndex = parseInt(req.params.reviewPageId) + parseInt(cachedPageNumber) -remove}
-       else {reviewIndex = req.params.reviewPageId};
+    let arrayLength = reviewArray.length;
+    let remove = parseInt(cachedPageNumber);
 
-        res.json({
-            data: reviewArray[reviewIndex],
-            currentArrayLength: arrayLength, 
-            totalArrayLength: pageTotal,
-            lastPage: lastPage,
-        })
-    }); 
+    if (cachedPageNumber > 1) {
+      reviewIndex =
+        parseInt(req.params.reviewPageId) + parseInt(cachedPageNumber) - remove;
+    } else {
+      reviewIndex = req.params.reviewPageId;
+    }
 
+    res.json({
+      data: reviewArray[reviewIndex],
+      currentArrayLength: arrayLength,
+      totalArrayLength: pageTotal,
+      lastPage: lastPage,
+    });
+  }
+);
 
 // route for screeningtimes on movie page
 app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
-    const screening = await getScreeningsMovie(req.params.movieId);
+  const screening = await getScreeningsMovie(req.params.movieId);
 
-    res.json(screening)
-}); 
+  res.json(screening);
+});
 
 app.get("/movies", async (req, res) => {
-    const movies = await api.loadMovies();
-    //console.log(movies)
-    res.render("movies", { movies });
+  const movies = await api.loadMovies();
+  //console.log(movies)
+  res.render("movies", { movies });
 });
 
 app.get("/movies/:movieId", async (req, res) => {
-    const movie = await api.loadMovie(req.params.movieId);
-    if (movie) {
-        res.render("movie", { movie });
-    } else {
-        res.status(404).render("404");
-    }
+  const movie = await api.loadMovie(req.params.movieId);
+  if (movie) {
+    res.render("movie", { movie });
+  } else {
+    res.status(404).render("404");
+  }
 });
 
 app.get("/api/movies/:movieId/ratings", async (req, res) => {
-    let data = (await getRatings(req.params.movieId, api));
-    
-    /*let data = await api.loadAllRatings(req.params.movieId);  
-        let metaMsg = "User rating: ";  
-    if(data.length < 5) {
-        data = await loadRating(req.params.movieId);
-        const id = data.attributes.imdbId; 
-        data = await loadRatings(id);
-        metaMsg = "Imdb rating: "; 
-    } else {
-        let sum = 0;
-        for (let i = 0; i < data.length; i++) {
-            sum += data[i].attributes.rating;
-        }
-        data = Math.round(sum / data.length);
-    }*/
-    
-    res.json({
-                data,
-                metaMsg  
-            }) 
-});
+  let data = await getRatings(req.params.movieId, api);
+  let metaMsg = data.metaMsg;
+  let rating = data.data;
 
+  res.json({
+    rating,
+    metaMsg,
+  });
+});
 
 app.use(express.json());
 
 app.post("/api/movies/:movieId/reviews", async (req, res) => {
-    const response = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify( {
-      data: {
-        author: req.body.name,
-        comment: req.body.comment,
-        rating: req.body.rating,
-        movie: req.params.movieId,
-      }
-    }) })
-    .then(res => {
-      console.log(req.body);
-      console.log(res);
-      return res.json();  
-    });
-    res.status(201).end();
+  const response = await fetch(
+    "https://lernia-kino-cms.herokuapp.com/api/reviews",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data: {
+          author: req.body.name,
+          comment: req.body.comment,
+          rating: req.body.rating,
+          movie: req.params.movieId,
+        },
+      }),
+    }
+  ).then((res) => {
+    console.log(req.body);
+    console.log(res);
+    return res.json();
+  });
+  res.status(201).end();
 });
 
 app.get("/about", async (req, res) => {
-    res.render("about");
+  res.render("about");
 });
 
 app.use("/404", async (req, res) => {
-    res.render("404");
-    res.status(404);
+  res.render("404");
+  res.status(404);
 });
 
 app.use("/", express.static("./public"));

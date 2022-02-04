@@ -93,7 +93,7 @@ const api = { async loadComment() {[
       }
 ]}}
 
-const movieId = 3;
+const movieId = 2;
 
 
 
@@ -102,8 +102,9 @@ test("Recieved data correct format", async () => {
 
     console.log(payload)
     expect(payload).toBeTruthy();
-    expect(payload.length).toBeGreaterThanOrEqual(0);
-    expect(payload[0].attributes.rating).toBeGreaterThanOrEqual(0);
+    expect(payload.data).toBeGreaterThanOrEqual(0);
+    //expect(payload.length).toBeGreaterThanOrEqual(0);
+    //expect(payload[0].attributes.rating).toBeGreaterThanOrEqual(0);
 
 });
 

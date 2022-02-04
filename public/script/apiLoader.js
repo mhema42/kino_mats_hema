@@ -50,5 +50,5 @@ export default {
   loadScreenings: loadScreenings,
   loadScreeningsMovie: loadScreeningsMovie,
   loadRating: loadRating,
-  loadAllRatings: loadAllRatings
+  loadAllRatings: loadAllRatings,
 };
