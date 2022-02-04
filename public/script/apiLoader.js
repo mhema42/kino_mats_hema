@@ -25,7 +25,6 @@ export async function loadScreeningsMovie(movieId) {
   const payload = await res.json();
   return payload.data;
 }
-//&filters[movie]=" + movieId
 
 export async function loadReviews(movieId, reviewPageId) {
   const res = await fetch(API_BASE + "/reviews?pagination[pageSize]=5&pagination[page]=" + reviewPageId + "&sort=createdAt&filters[movie]=" + movieId);

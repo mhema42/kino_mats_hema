@@ -32,17 +32,6 @@ app.get("/api/screeningtime", async (req, res) => {
   res.json(screening);
 });
 
-//used for the caching function for the review page
-let cachTimer = 1;
-let review;
-let reviewArray = [];
-let cachedMovieId = 0.1;
-let cachedPageNumber;
-let pageTotal = 0;
-let lastPage;
-let j = 0;
-let reviewIndex = 1;
-
 app.get("/api/movies/:movieId/reviews/:reviewPageId", async (req, res) => {
   let data = await loadReviews(req.params.movieId, req.params.reviewPageId);
   let lastPage = data.meta.pagination.pageCount;
@@ -65,7 +54,6 @@ app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
 
 app.get("/movies", async (req, res) => {
   const movies = await api.loadMovies();
-  //console.log(movies)
   res.render("movies", { movies });
 });
 
@@ -108,9 +96,7 @@ app.post("/api/movies/:movieId/reviews", async (req, res) => {
         },
       }),
     }
-  ).then((res) => {
-    console.log(req.body);
-    console.log(res);
+  ).then((res) => {   
     return res.json();
   });
   res.status(201).end();

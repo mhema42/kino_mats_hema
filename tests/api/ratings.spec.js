@@ -416,7 +416,7 @@ const api = { async loadAllRatings() {
 
 test("Recieved data correct format", async () => {
     const payload = await getRatings(movieId, api);
-    console.log(payload)
+  
     expect(payload).toBeTruthy();
     expect(payload.data).toBeGreaterThanOrEqual(0);
     expect(payload.metaMsg).toContain("User rating: ");
