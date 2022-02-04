@@ -2,13 +2,13 @@ import express from "express";
 import { engine } from "express-handlebars";
 import { marked } from "marked";
 import fetch from "node-fetch";
-
+import  getRatings  from "./public/script/getRatings.js"
 import { loadReviews } from "./public/script/apiLoader.js";
-import { loadRating } from "./public/script/apiLoader.js";
-import loadRatings from "./public/script/loadRatings.js";
+//import { loadRating } from "./public/script/apiLoader.js";
+//import loadRatings from "./public/script/loadRatings.js";
 import { getScreenings, getScreeningsMovie } from "./public/script/loadScreening.js"; 
 import api from "./public/script/apiLoader.js";
-import { loadAllRatings } from "./public/script/apiLoader.js";
+//import { loadAllRatings } from "./public/script/apiLoader.js";
 import reviews from "./public/script/loadReviews.js";
 
 const app = express();
@@ -85,6 +85,7 @@ app.get("/api/movies/:movieId/screeningtime", async (req, res) => {
 
 app.get("/movies", async (req, res) => {
     const movies = await api.loadMovies();
+    //console.log(movies)
     res.render("movies", { movies });
 });
 
@@ -98,19 +99,29 @@ app.get("/movies/:movieId", async (req, res) => {
 });
 
 app.get("/api/movies/:movieId/ratings", async (req, res) => {
-    const data = await loadAllRatings(req.params.movieId);  
-    console.log(data.length)
-    res.json(data) 
+    let data = (await getRatings(req.params.movieId, api));
+    
+    /*let data = await api.loadAllRatings(req.params.movieId);  
+        let metaMsg = "User rating: ";  
+    if(data.length < 5) {
+        data = await loadRating(req.params.movieId);
+        const id = data.attributes.imdbId; 
+        data = await loadRatings(id);
+        metaMsg = "Imdb rating: "; 
+    } else {
+        let sum = 0;
+        for (let i = 0; i < data.length; i++) {
+            sum += data[i].attributes.rating;
+        }
+        data = Math.round(sum / data.length);
+    }*/
+    
+    res.json({
+                data,
+                metaMsg  
+            }) 
 });
 
-app.get("/api/movies/:movieId/rating", async (req, res) => {
-    const data = await loadRating(req.params.movieId);       
-    const id = data.attributes.imdbId;  
-    const imdb = await loadRatings(id);
-    res.json({
-    rating: imdb        
-    })            
-}); 
 
 app.use(express.json());
 

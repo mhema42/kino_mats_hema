@@ -1,87 +1,109 @@
-import  getReview  from "../../public/script/getReview.js";
+//import { loadAllRatings } from "../../public/script/apiLoader.js";//
+import { loadAllRatings } from "../../public/script/apiLoader.js";
+import getRatings from "../../public/script/getRatings.js";
 
-const rate = { async loadRating() {
-    return [
-        {   "movie":  
-                {   
-                    "id": 2,
-                    "data": {
-                        "comment": "Good",
-                        "rating": "5",
-                        "name": "Olaf"
-                    }
-                },
-            "movie":
-                {   
-                    "id": 2,
-                    "data": {                        
-                        "comment": "So so",
-                        "rating": "3",
-                        "name": "Dennis"
-                    }
-                },
-            "movie":
-                {
-                    "id": 2,
-                    "data": {                        
-                        "comment": "So so",
-                        "rating": "5",
-                        "name": "Alex"
-                    }
-                },
-            "movie":
-                {
-                    "id": 2,
-                    "data": {                       
-                        "comment": "So so",
-                        "rating": "0",
-                        "name": "Dennis"
-                    }
-                },
-            "movie":    
-                {
-                    "id": 2,
-                    "data": {
-                        "comment": "So so",
-                        "rating": "2",
-                        "name": "Dennis"
-                    }
-                },
-            "movie":
-                {
-                    "id": 2,
-                    "data": {
-                        "comment": "So so",
-                        "rating": "1",
-                        "name": "Dennis"
-                    }
-                },
-            }
-        ]
-    }   
-};
+const api = { async loadComment() {[
+    {
+        "id": 165,
+        "attributes": {
+          "comment": "I'm so proud of my dad",
+          "rating": 5,
+          "author": 'Son',
+          "verified": null,
+          "createdAt": '2022-02-01T21:23:11.058Z',
+          "updatedAt": '2022-02-01T21:23:11.058Z'
+        }
+      },
+      {
+        "id": 166,
+        "attributes": {
+          "comment": "I'm so proud of my dad",
+          "rating": 5,
+          "author": 'Son',
+          "verified": null,
+          "createdAt": '2022-02-01T21:23:35.561Z',
+          "updatedAt": '2022-02-01T21:23:35.561Z'
+        }
+      },
+      {
+        "id": 167,
+        "attributes": {
+          "comment": "I'm so proud of my dad",
+          "rating": 5,
+          "author": 'Son',
+          "verified": null,
+          "createdAt": '2022-02-01T21:23:35.561Z',
+          "updatedAt": '2022-02-01T21:23:35.561Z'
+        }
+      },
+      {
+        "id": 190,
+        "attributes": {
+          "comment": 'helt okej',
+          "rating": 3,
+          "author": 'hej',
+          "verified": null,
+          "createdAt": '2022-02-02T12:41:33.257Z',
+          "updatedAt": '2022-02-02T12:41:33.257Z'
+        }
+      },
+      {
+        "id": 191,
+        "attributes": {
+          "comment": 'bra',
+          "rating": 4,
+          "author": 'hejsan',
+          "verified": null,
+          "createdAt": '2022-02-02T12:42:36.011Z',
+          "updatedAt": '2022-02-02T12:42:36.011Z'
+        }
+      },
+      {
+        "id": 223,
+        "attributes": {
+          "comment": 'so so',
+          "rating": 2,
+          "author": 'Patrik',
+          "verified": true,
+          "createdAt": '2022-02-02T15:04:08.527Z',
+          "updatedAt": '2022-02-02T15:04:08.527Z'
+        }
+      },
+      {
+        "id": 228,
+        "attributes": {
+          "comment": 'Helt ok!',
+          "rating": 3,
+          "author": 'John Doe',
+          "verified": true,
+          "createdAt": '2022-02-02T15:07:45.140Z',
+          "updatedAt": '2022-02-02T15:07:45.140Z'
+        }
+      },
+      {
+        "id": 288,
+        "attributes": {
+          "comment": 'bleh',
+          "rating": 2,
+          "author": 'godmother',
+          "verified": true,
+          "createdAt": '2022-02-03T21:43:23.372Z',
+          "updatedAt": '2022-02-03T21:43:23.372Z'
+        }
+      }
+]}}
+
+const movieId = 3;
 
 
-const rat = { async loadRating() { 
-    return [ {
-    "id": 2,
-                
-                    "data": {
-                        "comment": "So so",
-                        "rating": "1",
-                        "name": "Dennis"
-                    }
-            }
-    ]}
-}
 
+test("Recieved data correct format", async () => {
+    const payload = await getRatings(movieId, api);
 
-
-test("Recieved data ", async () => {
-    const payload = await getReview(rat);
-    
+    console.log(payload)
     expect(payload).toBeTruthy();
-    expect(payload.data.rating).toBeTruthy();
+    expect(payload.length).toBeGreaterThanOrEqual(0);
+    expect(payload[0].attributes.rating).toBeGreaterThanOrEqual(0);
 
 });
 
