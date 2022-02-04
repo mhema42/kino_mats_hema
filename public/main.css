@@ -175,7 +175,6 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   padding: 20px;
   width: 80vw;
   background-color: #fff;
-
   min-height: calc(100vh - 291px); }
   .movie-content .current-title {
     font-size: 2rem;
@@ -201,7 +200,6 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   padding: 20px;
   background-color: #fff;
   width: 70vw;
-
   min-height: calc(100vh - 310px); }
   .movie .movie-title {
     color: #000;

@@ -20,65 +20,62 @@ async function loadReview () {
     if(arrayLength >= 1) {
         reviewTotal.innerHTML = "Review page " +pageNumber + "/ " +totalArrayLength;
     } else {
-        reviewTotal.innerHTML = "There are currently no reviews for the selected movie, so you could be the first one to review it ;)"
+      if (reviewPageId + 1 > intervalsVariable - 1) {
+        actualPage++;
+        reviewPageId++;
+      }
+      reviewPageId;
     }
+    loadReview();
+  };
 
-    let lastTimeClickedNext = 0;
-    
-    const nextReviewButton = document.querySelector(".nextReviewButton");
-    if( pageNumber === totalArrayLength ) {nextReviewButton.disabled = true, nextReviewButton.classList.add("disabledButton")} else {nextReviewButton.disabled = false, nextReviewButton.classList.remove("disabledButton")}; 
-    nextReviewButton.onclick = function nextReviewPage () {
-        if(Date.now() - lastTimeClickedNext < 10000) return;
-        lastTimeClickedNext = Date.now(); 
-        if(reviewPageId +1 < totalArrayLength & reviewPageId+1 < intervalsVariable & reviewPageId < totalArrayLength){
-            reviewPageId++;  
-        } else { 
-            if (reviewPageId+1 > intervalsVariable -1) {
-                actualPage++; 
-                reviewPageId++;  
-            }
-            reviewPageId;
-        } 
-        loadReview(); 
+  const previousReviewButton = document.querySelector(".previousReviewButton");
+  if (pageNumber === 1) {
+    (previousReviewButton.disabled = true),
+      previousReviewButton.classList.add("disabledButton");
+  } else {
+    (previousReviewButton.disabled = false),
+      previousReviewButton.classList.remove("disabledButton");
+  }
+  previousReviewButton.onclick = function previousReviewPage() {
+    let divider = (intervalsVariable = intervalsVariable - 5);
+    if (reviewPageId - 1 + arrayLength >= arrayLength) {
+      reviewPageId--;
+      if (reviewPageId + 1 === divider) {
+        actualPage--;
+      }
+    } else {
+      reviewPageId;
     }
+    loadReview();
+  };
 
+  document.querySelector(".movie-review").innerHTML = "";
 
-    const previousReviewButton = document.querySelector(".previousReviewButton");
-    if( pageNumber === 1) {previousReviewButton.disabled = true, previousReviewButton.classList.add("disabledButton")} else {previousReviewButton.disabled = false, previousReviewButton.classList.remove("disabledButton")}
-    previousReviewButton.onclick = function previousReviewPage () {
-        let divider = intervalsVariable = intervalsVariable - 5; 
-        if(reviewPageId -1 +arrayLength >= arrayLength){
-            reviewPageId--;
-            if (reviewPageId +1 === divider){
-                actualPage--; 
-        }
-        } else {
-            reviewPageId;  
-        } 
-        loadReview(); 
-    }
+  if (arrayLength >= 1) {
+    payload.data.forEach((review) => {
+      const li = document.createElement("li");
+      const author = document.createElement("span");
+      author.innerText = review.author + " ";
+      const rating = document.createElement("a");
+      rating.innerText = "Rating: " + review.rating + " ";
+      const comment = document.createElement("a");
+      comment.innerText = "Comment: " + review.comment;
 
-  
-    document.querySelector(".movie-review").innerHTML = ""; 
+      if (author) {
+        li.append(author);
+      }
+      if (rating) {
+        li.append(rating);
+      }
+      if (comment) {
+        li.append(comment);
+      }
+      document.querySelector(".movie-review").append(li);
+    });
+  }
 
-    if(arrayLength >= 1) {
-        payload.data.forEach(review => {
-            const li = document.createElement("li");
-            const author = document.createElement("span");
-            author.innerText = review.author + " "; 
-            const rating = document.createElement("a");
-            rating.innerText = "Rating: " + review.rating + " "; 
-            const comment = document.createElement("a");
-            comment.innerText = "Comment: " + review.comment; 
-            
-            if(author) {li.append(author)}; 
-            if(rating) {li.append(rating)}; 
-            if(comment) {li.append(comment)}; 
-            document.querySelector(".movie-review").append(li);
-        });    
-    }     
-  }; 
-  loadReview(); 
+loadReview();
 
 // fetch to local API for screening times for individual movies
 (async () => {
@@ -97,54 +94,38 @@ async function loadReview () {
 })();
 
 (async () => {
-    const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings/"); 
-    const imdbR = await res2.json();    
-    document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + JSON.stringify(imdbR.rating);
+  const res2 = await fetch(
+    "http://localhost:5080/api/movies/" + movieId + "/ratings/"
+  );
+  const rate = await res2.json();
+  document.querySelector(".movie-rating").innerHTML = rate.metaMsg + " " + JSON.stringify(rate.rating);
 })();
 
-// add average rating / imdb rating
-(async () => {
-    const response = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings");
-    const payload = await response.json();
-    let i = 0;
-    let sum = 0;
-
-    if (payload.length >= 5) {
-        for (i = 0; i < payload.length; i++) {
-            sum += payload[i].attributes.rating;
-            document.querySelector(".movie-rating").innerHTML = "Rating: " + JSON.stringify(Math.round(sum / payload.length) + "/5");
-        }
-    } else {
-        const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/rating/");
-        const imdbR = await res2.json();
-        document.querySelector(".movie-rating").innerHTML = "There is no ratings from users. IMDB's rating is: " + JSON.stringify(imdbR.rating);
-    }
-})();
 
 document.querySelector("#addBtn").onclick = async (ev) => {
-    ev.preventDefault();
-    const rating = document.querySelector("#rate").value;
-    const comment = document.querySelector("#addComment").value;
-    const author = document.querySelector("#addName").value;
-    
-    await fetch(`/api/movies/${movieId}/reviews`, { 
-        method: "POST",
-        mode: "cors",
-        credentials: "same-origin",
-        headers: {
-             "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            movieId: movieId,
-            comment: comment,
-            rating: rating,
-            name: author
-        }) 
-    });
-    
-    document.querySelector("#rate").selectedIndex = 0;  
-    document.querySelector("#addComment").value = "";
-    document.querySelector("#addName").value = "";
+  ev.preventDefault();
+  const rating = document.querySelector("#rate").value;
+  const comment = document.querySelector("#addComment").value;
+  const author = document.querySelector("#addName").value;
 
-    loadReview(); 
+  await fetch(`/api/movies/${movieId}/reviews`, {
+    method: "POST",
+    mode: "cors",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      movieId: movieId,
+      comment: comment,
+      rating: rating,
+      name: author,
+    }),
+  });
+
+  document.querySelector("#rate").selectedIndex = 0;
+  document.querySelector("#addComment").value = "";
+  document.querySelector("#addName").value = "";
+
+  loadReview();
 };
