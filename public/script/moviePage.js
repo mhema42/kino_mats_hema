@@ -10,8 +10,6 @@ async function loadReview() {
     let reviews = payload.data;
     lastPage = payload.metaLastPage;
     arrayLength = payload.metaLength;
-    console.log(reviews);
-    console.log(arrayLength);
 
     const reviewTotal = document.querySelector(".reviewTotal");
     if (arrayLength >= 1) {
@@ -35,7 +33,6 @@ async function loadReview() {
         loadReview();
     }
 
-
     const previousReviewButton = document.querySelector(".previousReviewButton");
     if (reviewPageId === 1) { previousReviewButton.disabled = true, previousReviewButton.classList.add("disabledButton") } else { previousReviewButton.disabled = false, previousReviewButton.classList.remove("disabledButton") }
     previousReviewButton.onclick = function previousReviewPage() {
@@ -47,7 +44,6 @@ async function loadReview() {
         }
         loadReview();
     }
-
 
     document.querySelector(".movie-review").innerHTML = "";
 
@@ -120,28 +116,27 @@ document.querySelector("#addBtn").onclick = async (ev) => {
     const rating = document.querySelector("#rate").value;
     const comment = document.querySelector("#addComment").value;
     const author = document.querySelector("#addName").value;
-    /*
-        await fetch(`/api/movies/${movieId}/reviews`, {
-            method: "POST",
-            mode: "cors",
-            credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                movieId: movieId,
-                comment: comment,
-                rating: rating,
-                name: author
-            })
-        });
-    
-        document.querySelector("#rate").selectedIndex = 0;
-        document.querySelector("#addComment").value = "";
-        document.querySelector("#addName").value = "";
-    */
+
+    await fetch(`/api/movies/${movieId}/reviews`, {
+        method: "POST",
+        mode: "cors",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            movieId: movieId,
+            comment: comment,
+            rating: rating,
+            name: author
+        })
+    });
+
+    document.querySelector("#rate").selectedIndex = 0;
+    document.querySelector("#addComment").value = "";
+    document.querySelector("#addName").value = "";
+
 
     reviewPageId = lastPage;
-
     loadReview();
 };
