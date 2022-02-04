@@ -21,15 +21,15 @@ export async function loadScreenings() {
 }
 
 export async function loadScreeningsMovie(movieId) {
-  const res = await fetch(API_BASE + "/screenings?populate=movie&filters[movie]=" + movieId +"&sort=start_time");
+  const res = await fetch(API_BASE + "/screenings?populate=movie&filters[movie]=" + movieId + "&sort=start_time");
   const payload = await res.json();
   return payload.data;
 }
 
-export async function loadReviews(movieId, pageCount) {
-  const res = await fetch(API_BASE + "/reviews?pagination[page]=" + pageCount + "&filters[movie]="+ movieId);
+export async function loadReviews(movieId, reviewPageId) {
+  const res = await fetch(API_BASE + "/reviews?pagination[pageSize]=5&pagination[page]=" + reviewPageId + "&sort=createdAt&filters[movie]=" + movieId);
   let payload = await res.json();
-  return payload; 
+  return payload;
 }
 
 export async function loadRating(movieId) {
