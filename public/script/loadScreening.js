@@ -1,5 +1,3 @@
-// import { loadScreeningsMovie } from "./apiLoader.js";
-
 export async function getScreenings(api) {
   const now = new Date().toLocaleString();
 

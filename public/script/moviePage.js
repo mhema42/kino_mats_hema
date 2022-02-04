@@ -101,9 +101,7 @@ loadReview();
 })();
 
 (async () => {
-  const res2 = await fetch(
-    "http://localhost:5080/api/movies/" + movieId + "/ratings/"
-  );
+  const res2 = await fetch("http://localhost:5080/api/movies/" + movieId + "/ratings");
   const rate = await res2.json();
   document.querySelector(".movie-rating").innerHTML = rate.metaMsg + " " + JSON.stringify(rate.rating);
 })();

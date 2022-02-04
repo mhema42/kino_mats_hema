@@ -1,12 +1,10 @@
+import loadRatings from "./loadRatings.js"
 import { loadRating } from "./apiLoader.js";
-import loadRatings from  "./loadRatings.js";
-import { loadAllRatings } from "./apiLoader.js";
-
 
 export default async function getRatings(movieId, api) {
-    let data = await loadAllRatings(movieId);  
+    let data = await api.loadAllRatings(movieId);  
     let metaMsg = "User rating: ";  
-
+    console.log(data.length);
     if(data.length < 5) {
         data = await loadRating(movieId);
         const id = data.attributes.imdbId; 

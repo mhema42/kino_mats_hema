@@ -1,4 +1,3 @@
-
 export default class reviews {
     constructor (data) {
       this.author = data.attributes.author; 
@@ -7,6 +6,3 @@ export default class reviews {
       this.comment = data.attributes.comment;
     }
 }
-
-
-
