@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-test("Pagination Test1", async () => {
+test("Pagination Test1 Richards API and our API sends the same data for the same page", async () => {
     const res1 = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews?pagination[pageSize]=5&pagination[page]=1&filters[movie]=1");
     let payload1 = await res1.json();
     
@@ -13,7 +13,7 @@ test("Pagination Test1", async () => {
     expect(payload1.data[2].id === payload2.data[2].id).toBeTruthy();
 })
 
-test("Pagination Test2", async () => {
+test("Pagination Test2 Richards API and our API sends the same data for the same page", async () => {
     const res1 = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews?pagination[pageSize]=5&pagination[page]=8&filters[movie]=4");
     let payload1 = await res1.json();
 
@@ -29,7 +29,7 @@ test("Pagination Test2", async () => {
     expect(payload1.data[3].id === payload2.data[3].id).toBeTruthy();
 })
 
-test("Pagination Test3", async () => {
+test("Pagination Test3 Richards API and our API sends the same data for the same page", async () => {
     const res1 = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews?pagination[pageSize]=5&pagination[page]=12&filters[movie]=4");
     let payload1 = await res1.json();
 
@@ -49,7 +49,7 @@ test("Pagination Test3", async () => {
 })
 
 
-test("Pagination Test4", async () => {
+test("Pagination Test4 Richards API and our API sends the same data for the same page", async () => {
     const res1 = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews?pagination[pageSize]=5&pagination[page]=3&filters[movie]=8");
     let payload1 = await res1.json();
     
@@ -61,7 +61,6 @@ test("Pagination Test4", async () => {
     expect(payload1.data[2].attributes.rating === payload2.data[2].rating).toBeTruthy();
     expect(payload1.data[2].id === payload2.data[2].id).toBeTruthy();
 })
-
 
     
 

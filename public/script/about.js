@@ -28,21 +28,3 @@ document.querySelector(".menu-faq").addEventListener("click", () => {
   document.querySelector(".menu-faq").classList.add("menu-active");
   document.querySelector(".about-us-faq").classList.remove("about-us-hide");
 });
-
-
-
-
-    const res1 = await fetch("https://lernia-kino-cms.herokuapp.com/api/reviews?pagination[pageSize]=5&pagination[page]=12&filters[movie]=4");
-    let payload1 = await res1.json();
-
-    const dummy = await fetch("http://localhost:5080/api/movies/4/reviews/1/1"); 
-    let dummyPay = await dummy.json();
-
-    const dummy2 = await fetch("http://localhost:5080/api/movies/4/reviews/2/6"); 
-    let dummyPay2 = await dummy2.json();
-
-    const res2 = await fetch("http://localhost:5080/api/movies/4/reviews/3/11"); 
-    let payload2 = await res2.json();
-
-    console.log(payload1.data);
-    console.log(payload2);
