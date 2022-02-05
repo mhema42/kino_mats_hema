@@ -96,7 +96,7 @@ app.post("/api/movies/:movieId/reviews", async (req, res) => {
         },
       }),
     }
-  ).then((res) => {   
+  ).then((res) => {
     return res.json();
   });
   res.status(201).end();
@@ -112,7 +112,5 @@ app.use("/404", async (req, res) => {
 });
 
 app.use("/", express.static("./public"));
-
-app.listen(5080);
 
 export default app;
