@@ -66,11 +66,19 @@ header {
 #search {
   position: absolute;
   right: 20px;
-  /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
-    Author: Marta Anna Todorovic */ }
+  top: 35px;
+  color: #fff;
+  background-color: #C54343;
+  border-style: none;
+  border-radius: 4px;
+  padding: 8px; }
   #search:hover {
-    font-size: 1.2rem;
+    border: solid 1px #fff;
     cursor: pointer; }
+
+#search::placeholder {
+  color: #fff;
+  opacity: 0.8; }
 
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
 Author: Mats Hemå */
