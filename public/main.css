@@ -179,28 +179,29 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   width: 70vw;
   min-height: calc(100vh - 310px);
   color: #fff; }
-  .movie .movie-title {
-    color: #fff;
-    padding: 20px 0px 0px 20px;
-    margin: 0; }
-  .movie .intro {
-    padding: 0px 20px;
-    color: #fff; }
-  .movie .movie-rating {
-    padding: 20px 20px 0px 20px;
-    color: #d9d9d9; }
-  .movie a {
-    color: #d4af37; }
-  .movie .movie-img {
-    width: 50%;
-    box-shadow: 0px 0px 15px 1px black;
-    height: 400px;
-    width: auto;
-    margin: 20px;
-    float: none;
-    border: solid 1px #fff; }
+  .movie .movie-info-container {
+    margin: auto;
+    width: 40vw; }
+    .movie .movie-info-container .movie-title {
+      color: #fff;
+      padding: 20px 0px 0px 0px;
+      margin: 0; }
+    .movie .movie-info-container .intro {
+      color: #fff; }
+    .movie .movie-info-container .movie-rating {
+      margin-top: 30px;
+      color: #d9d9d9; }
+    .movie .movie-info-container a {
+      color: #d4af37; }
+    .movie .movie-info-container .movie-img {
+      height: 400px;
+      width: auto;
+      margin: 20px 0px;
+      float: none;
+      border: solid 1px #fff; }
   .movie .submit-review {
-    margin-top: 3rem;
+    margin: auto;
+    width: 40vw;
     padding: 20px; }
     .movie .submit-review .add-review {
       display: flex;
@@ -209,9 +210,7 @@ Author: Mats Hemå &  Marta Anna Todorovic */
       font-family: Arial, Helvetica, sans-serif;
       padding: 10px 30px;
       border: 2px solid #fff;
-      border-radius: 6px;
-      text-align: center;
-      max-width: 35vw; }
+      border-radius: 6px; }
       .movie .submit-review .add-review .review {
         margin: 0.5rem;
         font-family: Arial, Helvetica, sans-serif;
@@ -228,7 +227,8 @@ Author: Mats Hemå &  Marta Anna Todorovic */
         border-radius: 6px;
         background-color: #BB0000; }
   .movie .review-container {
-    padding: 0px 20px 20px 20px; }
+    margin: auto;
+    width: 40vw; }
     .movie .review-container .reviewTotal {
       color: #d9d9d9; }
     .movie .review-container .movie-review {
@@ -251,26 +251,25 @@ Author: Mats Hemå &  Marta Anna Todorovic */
     .movie .review-container li {
       display: flex;
       flex-direction: column;
-      max-width: 35vw;
       overflow: scroll;
       list-style: none;
       padding: 10px 30px;
-      margin: 2px;
+      margin: 2px 0px;
       background-color: #fff; }
       .movie .review-container li span {
         color: #000; }
-      .movie .review-container li a {
-        color: #000; }
-  .movie .screening-container .current-screenings {
-    font-size: 1.8rem;
-    margin-top: 3rem;
-    margin-bottom: 0;
-    padding: 20px 20px 0px 20px; }
-  .movie .screening-container ul {
-    padding: 0; }
-    .movie .screening-container ul li {
-      list-style: none;
-      padding: 5px 20px; }
+  .movie .screening-container {
+    margin: auto;
+    width: 40vw; }
+    .movie .screening-container .current-screenings {
+      font-size: 1.8rem;
+      margin-top: 3rem;
+      margin-bottom: 0; }
+    .movie .screening-container ul {
+      padding: 0; }
+      .movie .screening-container ul li {
+        list-style: none;
+        padding: 5px 0px; }
 
 .error-container {
   min-height: calc(100vh - 292px); }

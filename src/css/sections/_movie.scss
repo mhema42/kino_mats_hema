@@ -5,35 +5,37 @@
     width: 70vw;
     min-height: calc(100vh - 310px);
     color: $secondary-color;
+   
+    .movie-info-container {
+        margin: auto;
+        width: 40vw;
 
-    .movie-title {
-        color: $secondary-color;
-        padding: 20px 0px 0px 20px;
-        margin: 0;
-    }
-    .intro {
-        padding: 0px 20px;
-        color: $secondary-color;
-    }
-    .movie-rating {
-        padding: 20px 20px 0px 20px;
-        color: $fifth-color;
-    }
-    a {
-        color: $fourth-color;
-    }
-
-    .movie-img {
-        width: 50%;
-        box-shadow: 0px 0px 15px 1px black;
-        height: 400px;
-        width: auto;
-        margin: 20px;
-        float: none;
-        border: solid 1px $secondary-color;
-    }
+        .movie-title {
+            color: $secondary-color;
+            padding: 20px 0px 0px 0px;
+            margin: 0;
+        }
+        .intro {
+            color: $secondary-color;
+        }
+        .movie-rating {
+            margin-top: 30px;
+            color: $fifth-color;
+        }
+        a {
+            color: $fourth-color;
+        }
+        .movie-img {
+            height: 400px;
+            width: auto;
+            margin: 20px 0px;
+            float: none;
+            border: solid 1px $secondary-color;
+        }
+    }    
     .submit-review {
-        margin-top: 3rem;
+        margin: auto;
+        width: 40vw;
         padding: 20px;
 
         .add-review {
@@ -44,8 +46,6 @@
             padding: 10px 30px;
             border: 2px solid $secondary-color;
             border-radius: 6px;
-            text-align: center;
-            max-width: 35vw;
             
             .review {
                 margin: 0.5rem;
@@ -71,10 +71,12 @@
 
     }
     .review-container {
-        padding: 0px 20px 20px 20px;
+        margin: auto;
+        width: 40vw;
 
         .reviewTotal {
             color: $fifth-color;
+
         }
         .movie-review {
             margin-top: 1rem;
@@ -103,35 +105,32 @@
         li {
             display: flex;
             flex-direction: column;
-            max-width: 35vw;
             overflow: scroll;
             list-style: none;
             padding: 10px 30px;
-            margin: 2px;
+            margin: 2px 0px;
             background-color: $secondary-color;
 
             span {
                 color: $third-color;
             }
-            a {
-                color: $third-color;
-            }
         }
     }
     .screening-container {
+        margin: auto;
+        width: 40vw;
 
         .current-screenings {
             font-size: 1.8rem;
             margin-top: 3rem;
             margin-bottom: 0;
-            padding: 20px 20px 0px 20px;
         }
         ul {
             padding: 0;
         
             li {
                 list-style: none;
-                padding: 5px 20px;
+                padding: 5px 0px;
             }
         }    
     }

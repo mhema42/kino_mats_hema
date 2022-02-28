@@ -1,16 +1,18 @@
 <div class="movie">
 
-  <h1 class="movie-title">{{ movie.attributes.title }}</h1>
+  <div class="movie-info-container"> 
+    <h1 class="movie-title">{{ movie.attributes.title }}</h1>
 
-  <div class="intro">
-    {{{ markdown movie.attributes.intro }}}
+    <div class="intro">
+      {{{ markdown movie.attributes.intro }}}
+    </div>
+
+    <div class="movie-rating"></div>
+
+    {{#if movie.attributes.image }}
+    <img class="movie-img" alt="movie poster" src="{{ movie.attributes.image.url }}">
+    {{/if }}
   </div>
-
-  <div class="movie-rating"></div>
-
-  {{#if movie.attributes.image }}
-  <img class="movie-img" alt="movie poster" src="{{ movie.attributes.image.url }}">
-  {{/if }}
 
   <div class="submit-review">
     <h2>Lämna en recension</h2>
