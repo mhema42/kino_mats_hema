@@ -13,7 +13,7 @@ async function loadReview() {
 
   const reviewTotal = document.querySelector(".reviewTotal");
   if (arrayLength >= 1) {
-    reviewTotal.innerHTML = "Review page " + reviewPageId + "/ " + lastPage;
+    reviewTotal.innerHTML = "Review page " + reviewPageId + "/" + lastPage;
   } else {
     reviewTotal.innerHTML = "There are currently no reviews for the selected movie, so you could be the first one to review it ;)"
   }
@@ -64,9 +64,9 @@ async function loadReview() {
       const li = document.createElement("li");
       const author = document.createElement("span");
       author.innerText = review.author + " ";
-      const rating = document.createElement("a");
+      const rating = document.createElement("span");
       rating.innerText = "Rating: " + review.rating + " ";
-      const comment = document.createElement("a");
+      const comment = document.createElement("span");
       comment.innerText = "Comment: " + review.comment;
 
       if (author) {

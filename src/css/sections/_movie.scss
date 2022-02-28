@@ -19,6 +19,9 @@
         padding: 20px 20px 0px 20px;
         color: $fifth-color;
     }
+    a {
+        color: $fourth-color;
+    }
 
     .movie-img {
         width: 50%;
@@ -72,9 +75,26 @@
         
         .movie-review {
             margin-top: 1rem;
+            padding: 0;
+        }
+        .previousReviewButton {
+            background-color: $third-color;
+            color: $primary-color;
+            border-style: none;
+            border-bottom: solid 1px $primary-color;
+            padding: 0;
+            margin-right: 20px;
+            
+            &:hover {
+                cursor: pointer;
+            }
         }
         .nextReviewButton {
             background-color: $primary-color;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
         li {
             list-style: none;

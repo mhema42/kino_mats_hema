@@ -61,7 +61,7 @@ header {
   padding: 10px 30px; }
 
 .disabledButton {
-  background-color: gray; }
+  display: none; }
 
 #search {
   position: absolute;
@@ -69,7 +69,8 @@ header {
   /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
     Author: Marta Anna Todorovic */ }
   #search:hover {
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    cursor: pointer; }
 
 /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
 Author: Mats Hemå */
@@ -139,36 +140,10 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   height: 35vw;
   background-size: cover; }
 
-.important-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000;
-  height: 35px;
-  font-size: 1.2rem; }
-
-.important-info-text {
-  color: #fff;
-  animation: blink 2s ease-out; }
-
-@keyframes blink {
-  0% {
-    opacity: 0; }
-  20% {
-    opacity: 1; }
-  40% {
-    opacity: 0; }
-  60% {
-    opacity: 1; }
-  80% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
 .movie-content {
   margin: auto;
   padding: 20px;
-  width: 80vw;
+  width: 70vw;
   background-color: #000;
   min-height: calc(100vh - 291px); }
   .movie-content .current-title {
@@ -206,6 +181,8 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   .movie .movie-rating {
     padding: 20px 20px 0px 20px;
     color: #d9d9d9; }
+  .movie a {
+    color: #d4af37; }
   .movie .movie-img {
     width: 50%;
     box-shadow: 0px 0px 15px 1px black;
@@ -245,9 +222,21 @@ Author: Mats Hemå &  Marta Anna Todorovic */
   .movie .review-container {
     padding: 0px 20px 20px 20px; }
     .movie .review-container .movie-review {
-      margin-top: 1rem; }
+      margin-top: 1rem;
+      padding: 0; }
+    .movie .review-container .previousReviewButton {
+      background-color: #000;
+      color: #BB0000;
+      border-style: none;
+      border-bottom: solid 1px #BB0000;
+      padding: 0;
+      margin-right: 20px; }
+      .movie .review-container .previousReviewButton:hover {
+        cursor: pointer; }
     .movie .review-container .nextReviewButton {
       background-color: #BB0000; }
+      .movie .review-container .nextReviewButton:hover {
+        cursor: pointer; }
     .movie .review-container li {
       list-style: none;
       padding: 10px;
@@ -273,7 +262,7 @@ Author: Mats Hemå &  Marta Anna Todorovic */
 
 .movie-container {
   min-height: calc(100vh - 641px);
-  width: 80vw;
+  width: 70vw;
   background-color: #000;
   margin: auto; }
 
