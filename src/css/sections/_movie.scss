@@ -45,7 +45,7 @@
             border: 2px solid $secondary-color;
             border-radius: 6px;
             text-align: center;
-            width: 25rem;
+            max-width: 35vw;
             
             .review {
                 margin: 0.5rem;
@@ -63,7 +63,7 @@
             .button-review{
                 box-sizing: border-box;
                 width: max-content;
-                margin: 20px;
+                margin: 10px;
                 border-radius: 6px;
                 background-color: $primary-color;
             }
@@ -72,16 +72,19 @@
     }
     .review-container {
         padding: 0px 20px 20px 20px;
-        
+
+        .reviewTotal {
+            color: $fifth-color;
+        }
         .movie-review {
             margin-top: 1rem;
             padding: 0;
         }
         .previousReviewButton {
             background-color: $third-color;
-            color: $primary-color;
+            color: $fifth-color;
             border-style: none;
-            border-bottom: solid 1px $primary-color;
+            border-bottom: solid 1px $fifth-color;
             padding: 0;
             margin-right: 20px;
             
@@ -90,15 +93,20 @@
             }
         }
         .nextReviewButton {
-            background-color: $primary-color;
+            background-color: $fifth-color;
+            color: $third-color;
 
             &:hover {
                 cursor: pointer;
             }
         }
         li {
+            display: flex;
+            flex-direction: column;
+            max-width: 35vw;
+            overflow: scroll;
             list-style: none;
-            padding: 10px;
+            padding: 10px 30px;
             margin: 2px;
             background-color: $secondary-color;
 
@@ -109,9 +117,10 @@
                 color: $third-color;
             }
         }
-        .current-screenings {
-            font-size: 1.8rem;
-            margin: 5rem 0rem 0rem 0rem;
-        }
+    }
+    .current-screenings {
+        font-size: 1.8rem;
+        margin-top: 3rem;
+        padding: 20px;
     }
 }

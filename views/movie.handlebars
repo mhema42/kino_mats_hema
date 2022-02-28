@@ -13,7 +13,7 @@
   {{/if }}
 
   <div class="submit-review">
-    <h2>Lämna en recention</h2>
+    <h2>Lämna en recension</h2>
     <form id="frm" class="add-review">
       <textarea id="addComment" class="review review-text" placeholder="Add your review here"></textarea>
       <input type="hidden" value="{{ movie.id }}">
@@ -33,18 +33,19 @@
 
   <div class="review-container">
     <p class="reviewTotal"></p>
-    <button class="menu-btn previousReviewButton">Previous review page</button>
-    <button class="menu-btn nextReviewButton">Next review page</button>
     <div>
       <ol class="movie-review"></ol>
     </div>
 
-    <div class="screening-container">
+    <button class="menu-btn previousReviewButton">Previous review page</button>
+    <button class="menu-btn nextReviewButton">Next review page</button>
+
+  </div>
+
+  <div class="screening-container">
       <h2 class="current-screenings">Kommande visningar</h2>
       <ul class="screenings-for-each-movie"></ul>
     </div>
-
-  </div>
 
 </div>
 
