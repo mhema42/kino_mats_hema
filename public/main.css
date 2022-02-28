@@ -220,7 +220,7 @@ Author: Mats Hemå &  Marta Anna Todorovic */
         box-sizing: border-box; }
       .movie .submit-review .add-review .review-text {
         height: 4rem;
-        color: #fff; }
+        color: #000; }
       .movie .submit-review .add-review .button-review {
         box-sizing: border-box;
         width: max-content;
