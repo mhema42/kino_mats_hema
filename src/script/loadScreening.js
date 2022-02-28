@@ -36,8 +36,7 @@ export async function getScreeningsMovie(api, movieId) {
     data: screen.map(obj => {
       return {
         time: obj.attributes.start_time,
-        room: obj.attributes.room,
-        title: obj.attributes.movie.data.attributes.title
+        room: obj.attributes.room
       };
     }),
   };

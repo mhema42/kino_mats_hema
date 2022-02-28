@@ -118,9 +118,21 @@
             }
         }
     }
-    .current-screenings {
-        font-size: 1.8rem;
-        margin-top: 3rem;
-        padding: 20px;
+    .screening-container {
+
+        .current-screenings {
+            font-size: 1.8rem;
+            margin-top: 3rem;
+            margin-bottom: 0;
+            padding: 20px 20px 0px 20px;
+        }
+        ul {
+            padding: 0;
+        
+            li {
+                list-style: none;
+                padding: 5px 20px;
+            }
+        }    
     }
 }

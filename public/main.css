@@ -253,10 +253,16 @@ Author: Mats Hemå &  Marta Anna Todorovic */
         color: #000; }
       .movie .review-container li a {
         color: #000; }
-  .movie .current-screenings {
+  .movie .screening-container .current-screenings {
     font-size: 1.8rem;
     margin-top: 3rem;
-    padding: 20px; }
+    margin-bottom: 0;
+    padding: 20px 20px 0px 20px; }
+  .movie .screening-container ul {
+    padding: 0; }
+    .movie .screening-container ul li {
+      list-style: none;
+      padding: 5px 20px; }
 
 .error-container {
   min-height: calc(100vh - 292px); }

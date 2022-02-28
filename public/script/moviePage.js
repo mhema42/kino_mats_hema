@@ -92,7 +92,7 @@ loadReview();
   data.data.forEach(showtime => {
     const li = document.createElement("li");
     const movieShowTime = document.createElement("span");
-    movieShowTime.innerText = [showtime.time.replace(/T/, " kl ").replace(/:00.000Z/, " i ") + showtime.room + showtime.title];
+    movieShowTime.innerText = [showtime.time.replace(/T/, " kl. ").replace(/:00.000Z/, " i ") + showtime.room];
 
     li.append(movieShowTime);
 
