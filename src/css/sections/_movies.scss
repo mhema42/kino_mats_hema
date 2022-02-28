@@ -2,12 +2,12 @@
     margin: auto;
     padding: 20px;
     width: 80vw;
-    background-color: $secondary-color;
+    background-color: $third-color;
     min-height: calc(100vh - 291px);
 
     .current-title {
         font-size: 2rem;
-        color: $third-color;
+        color: $secondary-color;
         margin: 0;
         padding: 20px 0px 20px 20px;
     }
@@ -20,13 +20,12 @@
         padding: 5px 0px;
 
         a{
-            color: $third-color; 
+            color: $secondary-color; 
             text-decoration: none;
             font-size: 1.2rem;
         }
         a:hover{
-            font-size: 1.3rem;
-            font-weight: bold;
+            color: $fifth-color;
         }
     }
 }

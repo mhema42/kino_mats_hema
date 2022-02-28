@@ -1,11 +1,12 @@
 .movie-container {
-    min-height: calc(100vh - 670px);
+    min-height: calc(100vh - 641px);
     width: 80vw;
-    background-color: $secondary-color;
+    background-color: $third-color;
     margin: auto;
 }
 
 .current-movie-title {
     margin: 0;
     padding: 40px 20px;
+    color: $secondary-color
 }

@@ -2,7 +2,7 @@
 Author: Mats Hemå */
 
 footer {
-    background-color: $third-color;
+    background: linear-gradient(#780000, #BB0000);  
     color: $secondary-color;
     font-family: Arial, Helvetica, sans-serif; 
     
@@ -37,16 +37,16 @@ footer {
 
     .icon {
         a {
-        color: $fifth-color;
+        color: $secondary-color;
         text-decoration: none;
         font-size: 2.2rem;
         margin-right: 1rem;
         }
 
         i {
-            opacity: 0.6;
+            opacity: 0.7;
             &:hover {
-                color: $fourth-color;
+                color: $fifth-color;
                 opacity: 1;
             }
         }

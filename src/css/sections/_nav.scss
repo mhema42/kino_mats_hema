@@ -1,10 +1,9 @@
 header {
-    background-color: $primary-color; 
+    background: linear-gradient(#BB0000, #780000);
 
     .main-menu {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
         align-items: center;
         padding: 0;
         margin: 0 10vw 0 15vw;
@@ -14,8 +13,7 @@ header {
     Author: Marta Anna Todorovic */        
         a {
             &:hover {
-                color: $fourth-color;
-                box-shadow: 0px 0px 15px 1px $third-color;
+                border-bottom: 2px solid $secondary-color;
             }
         }
 
@@ -29,13 +27,8 @@ header {
     font-family: $font-choice;
     font-weight: bold;
     text-decoration: none;
-   
-    color: $third-color;
-    background-color: $primary-color;
+    color: $secondary-color;
     padding: 10px 30px;
-    border: 2px solid $secondary-color;
-    border-radius: 6px;
-    box-shadow: 0px 0px 10px rgba($third-color, 0.7);
 }
 
 .disabledButton {
@@ -43,13 +36,12 @@ header {
 }
 
 #search {
-    border-radius: 50%;
-    padding: 10px 10px 10px 14px;
-    text-shadow: 0px 0px 10px rgba($third-color, 0.9);
+   position: absolute;
+   right: 20px;
     
   /* Arbetsmetodik och Agila projektmetoder - Ytterhogdal
     Author: Marta Anna Todorovic */
     &:hover {  
-        box-shadow: 0px 0px 15px 1px $third-color;
+     font-size: 1.2rem;
     }
 }

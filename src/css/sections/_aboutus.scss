@@ -2,7 +2,9 @@
 Author: Mats Hemå &  Marta Anna Todorovic */
 
 .about-us-nav {
-    background-color: $third-color;
+    background-color: #780000;
+    border-top: solid 1px $secondary-color;
+    padding: 4px;
 
     .about-us-menu {
         align-items: center;
