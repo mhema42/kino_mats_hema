@@ -160,17 +160,34 @@ Author: Mats Hemå &  Marta Anna Todorovic */
     margin: 0;
     padding: 20px 0px 20px 20px; }
   .movie-content ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
     padding: 0px 0px 20px 20px;
+    max-width: 1200px;
+    height: auto;
     margin: 0; }
-  .movie-content .current-movie {
-    list-style-type: none;
-    padding: 5px 0px; }
-    .movie-content .current-movie a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.2rem; }
-    .movie-content .current-movie a:hover {
-      color: #d9d9d9; }
+    .movie-content ul .current-movie {
+      list-style-type: none;
+      padding: 5px 0px;
+      width: 360px; }
+      .movie-content ul .current-movie a {
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 1rem; }
+        .movie-content ul .current-movie a img {
+          margin: 1rem 0rem;
+          width: auto;
+          height: 500px;
+          border: solid 1px #fff; }
+          .movie-content ul .current-movie a img:hover {
+            border: solid 2px #fff; }
+      .movie-content ul .current-movie a:hover {
+        font-weight: bold; }
 
 .movie {
   margin: auto;

@@ -7,10 +7,13 @@
         {{#each movies }}
         <li class="current-movie">
             <a href="/movies/{{ this.id }}">
+                <img class="movie-img" alt="movie poster" src="{{ this.attributes.image.url }}">
                 {{ this.attributes.title }}
             </a>
         </li>
         {{/each}}
         
     </ul>
+
 </section>
+
