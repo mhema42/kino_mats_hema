@@ -60,10 +60,10 @@ header {
   font-weight: bold;
   text-decoration: none;
   color: #000;
-  background-color: #BB0000;
-  padding: 10px 30px;
-  border: 2px solid #fff;
-  border-radius: 6px;
+  background-color: #fff;
+  padding: 8px 30px;
+  border: 1px solid #fff;
+  border-radius: 3px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7); }
 
 .disabledButton {
